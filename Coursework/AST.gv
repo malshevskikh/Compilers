@@ -1,0 +1,5 @@
+digraph AST {
+	node [color=lightblue2 style=filled]
+	size="8,5"
+	standart_type -> integer
+}

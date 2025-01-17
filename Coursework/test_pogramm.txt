@@ -1,0 +1,22 @@
+var i,j,n:integer;
+    w:char;
+    a,b:boolean;
+    l:array[1..10] of integer;
+    s1:string;
+    s2:string[10];
+
+function f1(x:integer; h:char):string;
+function f2(r,u:boolean):string;
+
+while ( a or b )  do
+c := x + 1;
+
+while (a > 1) do
+    begin
+        j := b / 2;
+        b := a;
+        a := a - 1;
+    end
+
+for i:=1 to 13 do s:=(a and B) or (C and d);
+if b <= 24 then A := b / 2;

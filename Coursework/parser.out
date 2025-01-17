@@ -1,0 +1,4190 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> main
+Rule 1     main -> declarations
+Rule 2     main -> standart_subprogram
+Rule 3     main -> if_statement
+Rule 4     main -> expression
+Rule 5     main -> standart_cycle
+Rule 6     declarations -> VAR identifier_list COLON type SEMICOLON
+Rule 7     declarations -> VAR identifier_list COLON type SEMICOLON complex_declar
+Rule 8     standart_subprogram -> FUNCTION ID OPEN_BR parameter_list CLOSE_BR COLON standart_type SEMICOLON
+Rule 9     if_statement -> IF OPEN_BR logic_expression CLOSE_BR EQUALS boolean_value then_else_statement
+Rule 10    if_statement -> IF OPEN_BR relational_expression CLOSE_BR then_else_statement
+Rule 11    then_else_statement -> THEN compound_statement
+Rule 12    then_else_statement -> THEN simple_statement
+Rule 13    then_else_statement -> THEN compound_statement ELSE compound_statement
+Rule 14    then_else_statement -> THEN simple_statement ELSE compound_statement
+Rule 15    then_else_statement -> THEN compound_statement ELSE simple_statement
+Rule 16    then_else_statement -> THEN simple_statement ELSE simple_statement
+Rule 17    expression -> math_expression
+Rule 18    expression -> logic_expression
+Rule 19    expression -> relational_expression
+Rule 20    expression -> assignment_expression
+Rule 21    standart_cycle -> standart_while
+Rule 22    standart_cycle -> standart_for
+Rule 23    parameter_list -> identifier_list COLON type
+Rule 24    parameter_list -> parameter_list SEMICOLON identifier_list COLON type
+Rule 25    type -> standart_type
+Rule 26    type -> ARRAY OPEN_SQUARE_BR NUMBER POINT POINT NUMBER CLOSE_SQUARE_BR OF standart_type
+Rule 27    type -> standart_string
+Rule 28    identifier_list -> ID
+Rule 29    identifier_list -> identifier_list COMMA ID
+Rule 30    complex_declar -> identifier_list COLON type SEMICOLON
+Rule 31    complex_declar -> complex_declar identifier_list COLON type SEMICOLON
+Rule 32    standart_type -> INTEGER
+Rule 33    standart_type -> CHAR
+Rule 34    standart_type -> BOOLEAN
+Rule 35    standart_string -> STRING
+Rule 36    standart_string -> STRING OPEN_SQUARE_BR NUMBER CLOSE_SQUARE_BR
+Rule 37    standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement
+Rule 38    standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement
+Rule 39    standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement
+Rule 40    standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement
+Rule 41    standart_for -> FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement
+Rule 42    standart_for -> FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement
+Rule 43    assignment_expression -> ID EQUALITY NUMBER
+Rule 44    assignment_expression -> ID EQUALITY QUOTE ID QUOTE
+Rule 45    assignment_expression -> ID EQUALITY boolean_value
+Rule 46    assignment_expression -> ID EQUALITY math_expression
+Rule 47    assignment_expression -> ID EQUALITY logic_expression
+Rule 48    relational_expression -> simple_rel
+Rule 49    relational_expression -> complex_rel
+Rule 50    complex_rel -> simple_math rel_sign ID
+Rule 51    complex_rel -> complex_math rel_sign ID
+Rule 52    complex_rel -> ID rel_sign simple_math
+Rule 53    complex_rel -> ID rel_sign complex_math
+Rule 54    complex_rel -> simple_math rel_sign NUMBER
+Rule 55    complex_rel -> complex_math rel_sign NUMBER
+Rule 56    complex_rel -> NUMBER rel_sign simple_math
+Rule 57    complex_rel -> NUMBER rel_sign complex_math
+Rule 58    complex_rel -> OPEN_BR simple_math CLOSE_BR rel_sign ID
+Rule 59    complex_rel -> OPEN_BR complex_math CLOSE_BR rel_sign ID
+Rule 60    complex_rel -> ID rel_sign OPEN_BR simple_math CLOSE_BR
+Rule 61    complex_rel -> ID rel_sign OPEN_BR complex_math CLOSE_BR
+Rule 62    complex_rel -> OPEN_BR simple_math CLOSE_BR rel_sign NUMBER
+Rule 63    complex_rel -> OPEN_BR complex_math CLOSE_BR rel_sign NUMBER
+Rule 64    complex_rel -> NUMBER rel_sign OPEN_BR simple_math CLOSE_BR
+Rule 65    complex_rel -> NUMBER rel_sign OPEN_BR complex_math CLOSE_BR
+Rule 66    complex_rel -> math_expression rel_sign math_expression
+Rule 67    complex_rel -> OPEN_BR math_expression CLOSE_BR rel_sign OPEN_BR math_expression CLOSE_BR
+Rule 68    math_expression -> simple_math
+Rule 69    math_expression -> complex_math
+Rule 70    logic_expression -> simple_logic
+Rule 71    logic_expression -> complex_logic
+Rule 72    complex_math -> OPEN_BR simple_math CLOSE_BR math_sign ID
+Rule 73    complex_math -> OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+Rule 74    complex_math -> ID math_sign OPEN_BR simple_math CLOSE_BR
+Rule 75    complex_math -> NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+Rule 76    complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+Rule 77    complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+Rule 78    complex_math -> OPEN_BR complex_math CLOSE_BR math_sign ID
+Rule 79    complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+Rule 80    complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+Rule 81    complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign ID
+Rule 82    complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+Rule 83    complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign ID
+Rule 84    complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+Rule 85    simple_math -> ID math_sign ID
+Rule 86    simple_math -> ID math_sign NUMBER
+Rule 87    simple_math -> NUMBER math_sign ID
+Rule 88    simple_math -> NUMBER math_sign NUMBER
+Rule 89    compound_statement -> BEGIN simple_statement END
+Rule 90    simple_statement -> statement_list
+Rule 91    simple_statement -> empty
+Rule 92    statement_list -> statement
+Rule 93    statement_list -> statement_list SEMICOLON statement
+Rule 94    statement -> assignment_expression
+Rule 95    statement -> standart_cycle
+Rule 96    simple_logic -> ID log_sign ID
+Rule 97    simple_rel -> ID rel_sign ID
+Rule 98    simple_rel -> ID rel_sign NUMBER
+Rule 99    simple_rel -> ID rel_sign QUOTE ID QUOTE
+Rule 100   log_sign -> AND
+Rule 101   log_sign -> OR
+Rule 102   rel_sign -> MORE_OR_EQUAL
+Rule 103   rel_sign -> LESS_OR_EQUAL
+Rule 104   rel_sign -> NOT_EQUAL
+Rule 105   rel_sign -> MORE
+Rule 106   rel_sign -> LESS
+Rule 107   rel_sign -> EQUALS
+Rule 108   boolean_value -> TRUE
+Rule 109   boolean_value -> FALSE
+Rule 110   math_sign -> PLUS
+Rule 111   math_sign -> MINUS
+Rule 112   math_sign -> DIVISION
+Rule 113   math_sign -> MULTIPLICATION
+Rule 114   math_sign -> DIV
+Rule 115   math_sign -> MOD
+Rule 116   empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 100
+ARRAY                : 26
+BEGIN                : 89
+BOOLEAN              : 34
+CHAR                 : 33
+CLOSE_BR             : 8 9 10 37 38 39 40 58 59 60 61 62 63 64 65 67 67 72 73 74 75 76 76 77 77 78 79 79 80 80 81 82 82 83 84 84
+CLOSE_SQUARE_BR      : 26 36
+COLON                : 6 7 8 23 24 30 31
+COMMA                : 29
+DIV                  : 114
+DIVISION             : 112
+DO                   : 37 38 39 40 41 42
+DOWNTO               : 42
+ELSE                 : 13 14 15 16
+END                  : 89
+EQUALITY             : 41 42 43 44 45 46 47
+EQUALS               : 9 107
+FALSE                : 109
+FOR                  : 41 42
+FUNCTION             : 8
+ID                   : 8 28 29 41 42 43 44 44 45 46 47 50 51 52 53 58 59 60 61 72 74 78 81 83 85 85 86 87 96 96 97 97 98 99 99
+IF                   : 9 10
+INTEGER              : 32
+LESS                 : 106
+LESS_OR_EQUAL        : 103
+MINUS                : 111
+MOD                  : 115
+MORE                 : 105
+MORE_OR_EQUAL        : 102
+MULTIPLICATION       : 113
+NOT_EQUAL            : 104
+NUMBER               : 26 26 36 41 41 42 42 43 54 55 56 57 62 63 64 65 73 75 86 87 88 88 98
+OF                   : 26
+OPEN_BR              : 8 9 10 37 38 39 40 58 59 60 61 62 63 64 65 67 67 72 73 74 75 76 76 77 77 78 79 79 80 80 81 82 82 83 84 84
+OPEN_SQUARE_BR       : 26 36
+OR                   : 101
+PLUS                 : 110
+POINT                : 26 26
+QUOTE                : 44 44 99 99
+SEMICOLON            : 6 7 8 24 30 31 93
+STRING               : 35 36
+THEN                 : 11 12 13 14 15 16
+TO                   : 41
+TRUE                 : 108
+VAR                  : 6 7
+WHILE                : 37 38 39 40
+error                : 
+
+Nonterminals, with rules where they appear
+
+assignment_expression : 20 94
+boolean_value        : 9 45
+complex_declar       : 7 31
+complex_logic        : 71 83 84
+complex_math         : 51 53 55 57 59 61 63 65 69 77 78 79 80 80
+complex_rel          : 49
+compound_statement   : 11 13 13 14 15 37 39 41 42
+declarations         : 1
+empty                : 91
+expression           : 4
+identifier_list      : 6 7 23 24 29 30 31
+if_statement         : 3
+log_sign             : 81 82 83 84 96
+logic_expression     : 9 18 37 38 47
+main                 : 0
+math_expression      : 17 46 66 66 67 67
+math_sign            : 72 73 74 75 76 77 78 79 80 85 86 87 88
+parameter_list       : 8 24
+rel_sign             : 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 97 98 99
+relational_expression : 10 19 39 40
+simple_logic         : 70 81 82 82 84
+simple_math          : 50 52 54 56 58 60 62 64 68 72 73 74 75 76 76 77 79
+simple_rel           : 48
+simple_statement     : 12 14 15 16 16 38 40 89
+standart_cycle       : 5 95
+standart_for         : 22
+standart_string      : 27
+standart_subprogram  : 2
+standart_type        : 8 25 26
+standart_while       : 21
+statement            : 92 93
+statement_list       : 90 93
+then_else_statement  : 9 10
+type                 : 6 7 23 24 30 31
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . main
+    (1) main -> . declarations
+    (2) main -> . standart_subprogram
+    (3) main -> . if_statement
+    (4) main -> . expression
+    (5) main -> . standart_cycle
+    (6) declarations -> . VAR identifier_list COLON type SEMICOLON
+    (7) declarations -> . VAR identifier_list COLON type SEMICOLON complex_declar
+    (8) standart_subprogram -> . FUNCTION ID OPEN_BR parameter_list CLOSE_BR COLON standart_type SEMICOLON
+    (9) if_statement -> . IF OPEN_BR logic_expression CLOSE_BR EQUALS boolean_value then_else_statement
+    (10) if_statement -> . IF OPEN_BR relational_expression CLOSE_BR then_else_statement
+    (17) expression -> . math_expression
+    (18) expression -> . logic_expression
+    (19) expression -> . relational_expression
+    (20) expression -> . assignment_expression
+    (21) standart_cycle -> . standart_while
+    (22) standart_cycle -> . standart_for
+    (68) math_expression -> . simple_math
+    (69) math_expression -> . complex_math
+    (70) logic_expression -> . simple_logic
+    (71) logic_expression -> . complex_logic
+    (48) relational_expression -> . simple_rel
+    (49) relational_expression -> . complex_rel
+    (43) assignment_expression -> . ID EQUALITY NUMBER
+    (44) assignment_expression -> . ID EQUALITY QUOTE ID QUOTE
+    (45) assignment_expression -> . ID EQUALITY boolean_value
+    (46) assignment_expression -> . ID EQUALITY math_expression
+    (47) assignment_expression -> . ID EQUALITY logic_expression
+    (37) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement
+    (38) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement
+    (39) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement
+    (40) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement
+    (41) standart_for -> . FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement
+    (42) standart_for -> . FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (96) simple_logic -> . ID log_sign ID
+    (81) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign ID
+    (82) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (83) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign ID
+    (84) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (97) simple_rel -> . ID rel_sign ID
+    (98) simple_rel -> . ID rel_sign NUMBER
+    (99) simple_rel -> . ID rel_sign QUOTE ID QUOTE
+    (50) complex_rel -> . simple_math rel_sign ID
+    (51) complex_rel -> . complex_math rel_sign ID
+    (52) complex_rel -> . ID rel_sign simple_math
+    (53) complex_rel -> . ID rel_sign complex_math
+    (54) complex_rel -> . simple_math rel_sign NUMBER
+    (55) complex_rel -> . complex_math rel_sign NUMBER
+    (56) complex_rel -> . NUMBER rel_sign simple_math
+    (57) complex_rel -> . NUMBER rel_sign complex_math
+    (58) complex_rel -> . OPEN_BR simple_math CLOSE_BR rel_sign ID
+    (59) complex_rel -> . OPEN_BR complex_math CLOSE_BR rel_sign ID
+    (60) complex_rel -> . ID rel_sign OPEN_BR simple_math CLOSE_BR
+    (61) complex_rel -> . ID rel_sign OPEN_BR complex_math CLOSE_BR
+    (62) complex_rel -> . OPEN_BR simple_math CLOSE_BR rel_sign NUMBER
+    (63) complex_rel -> . OPEN_BR complex_math CLOSE_BR rel_sign NUMBER
+    (64) complex_rel -> . NUMBER rel_sign OPEN_BR simple_math CLOSE_BR
+    (65) complex_rel -> . NUMBER rel_sign OPEN_BR complex_math CLOSE_BR
+    (66) complex_rel -> . math_expression rel_sign math_expression
+    (67) complex_rel -> . OPEN_BR math_expression CLOSE_BR rel_sign OPEN_BR math_expression CLOSE_BR
+
+    VAR             shift and go to state 7
+    FUNCTION        shift and go to state 8
+    IF              shift and go to state 11
+    ID              shift and go to state 9
+    WHILE           shift and go to state 25
+    FOR             shift and go to state 26
+    NUMBER          shift and go to state 24
+    OPEN_BR         shift and go to state 10
+
+    main                           shift and go to state 1
+    declarations                   shift and go to state 2
+    standart_subprogram            shift and go to state 3
+    if_statement                   shift and go to state 4
+    expression                     shift and go to state 5
+    standart_cycle                 shift and go to state 6
+    logic_expression               shift and go to state 12
+    relational_expression          shift and go to state 13
+    math_expression                shift and go to state 14
+    assignment_expression          shift and go to state 15
+    standart_while                 shift and go to state 16
+    standart_for                   shift and go to state 17
+    simple_math                    shift and go to state 18
+    complex_math                   shift and go to state 19
+    simple_logic                   shift and go to state 20
+    complex_logic                  shift and go to state 21
+    simple_rel                     shift and go to state 22
+    complex_rel                    shift and go to state 23
+
+state 1
+
+    (0) S' -> main .
+
+
+
+state 2
+
+    (1) main -> declarations .
+
+    $end            reduce using rule 1 (main -> declarations .)
+
+
+state 3
+
+    (2) main -> standart_subprogram .
+
+    $end            reduce using rule 2 (main -> standart_subprogram .)
+
+
+state 4
+
+    (3) main -> if_statement .
+
+    $end            reduce using rule 3 (main -> if_statement .)
+
+
+state 5
+
+    (4) main -> expression .
+
+    $end            reduce using rule 4 (main -> expression .)
+
+
+state 6
+
+    (5) main -> standart_cycle .
+
+    $end            reduce using rule 5 (main -> standart_cycle .)
+
+
+state 7
+
+    (6) declarations -> VAR . identifier_list COLON type SEMICOLON
+    (7) declarations -> VAR . identifier_list COLON type SEMICOLON complex_declar
+    (28) identifier_list -> . ID
+    (29) identifier_list -> . identifier_list COMMA ID
+
+    ID              shift and go to state 28
+
+    identifier_list                shift and go to state 27
+
+state 8
+
+    (8) standart_subprogram -> FUNCTION . ID OPEN_BR parameter_list CLOSE_BR COLON standart_type SEMICOLON
+
+    ID              shift and go to state 29
+
+
+state 9
+
+    (43) assignment_expression -> ID . EQUALITY NUMBER
+    (44) assignment_expression -> ID . EQUALITY QUOTE ID QUOTE
+    (45) assignment_expression -> ID . EQUALITY boolean_value
+    (46) assignment_expression -> ID . EQUALITY math_expression
+    (47) assignment_expression -> ID . EQUALITY logic_expression
+    (85) simple_math -> ID . math_sign ID
+    (86) simple_math -> ID . math_sign NUMBER
+    (74) complex_math -> ID . math_sign OPEN_BR simple_math CLOSE_BR
+    (96) simple_logic -> ID . log_sign ID
+    (97) simple_rel -> ID . rel_sign ID
+    (98) simple_rel -> ID . rel_sign NUMBER
+    (99) simple_rel -> ID . rel_sign QUOTE ID QUOTE
+    (52) complex_rel -> ID . rel_sign simple_math
+    (53) complex_rel -> ID . rel_sign complex_math
+    (60) complex_rel -> ID . rel_sign OPEN_BR simple_math CLOSE_BR
+    (61) complex_rel -> ID . rel_sign OPEN_BR complex_math CLOSE_BR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+    (100) log_sign -> . AND
+    (101) log_sign -> . OR
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+
+    EQUALITY        shift and go to state 30
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+    AND             shift and go to state 40
+    OR              shift and go to state 41
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+
+    math_sign                      shift and go to state 31
+    log_sign                       shift and go to state 32
+    rel_sign                       shift and go to state 33
+
+state 10
+
+    (72) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign NUMBER
+    (76) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (81) complex_logic -> OPEN_BR . simple_logic CLOSE_BR log_sign ID
+    (82) complex_logic -> OPEN_BR . simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (83) complex_logic -> OPEN_BR . complex_logic CLOSE_BR log_sign ID
+    (84) complex_logic -> OPEN_BR . complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (58) complex_rel -> OPEN_BR . simple_math CLOSE_BR rel_sign ID
+    (59) complex_rel -> OPEN_BR . complex_math CLOSE_BR rel_sign ID
+    (62) complex_rel -> OPEN_BR . simple_math CLOSE_BR rel_sign NUMBER
+    (63) complex_rel -> OPEN_BR . complex_math CLOSE_BR rel_sign NUMBER
+    (67) complex_rel -> OPEN_BR . math_expression CLOSE_BR rel_sign OPEN_BR math_expression CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (96) simple_logic -> . ID log_sign ID
+    (81) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign ID
+    (82) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (83) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign ID
+    (84) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (68) math_expression -> . simple_math
+    (69) math_expression -> . complex_math
+
+    ID              shift and go to state 50
+    NUMBER          shift and go to state 51
+    OPEN_BR         shift and go to state 48
+
+    simple_math                    shift and go to state 49
+    complex_math                   shift and go to state 52
+    simple_logic                   shift and go to state 53
+    complex_logic                  shift and go to state 54
+    math_expression                shift and go to state 55
+
+state 11
+
+    (9) if_statement -> IF . OPEN_BR logic_expression CLOSE_BR EQUALS boolean_value then_else_statement
+    (10) if_statement -> IF . OPEN_BR relational_expression CLOSE_BR then_else_statement
+
+    OPEN_BR         shift and go to state 56
+
+
+state 12
+
+    (18) expression -> logic_expression .
+
+    $end            reduce using rule 18 (expression -> logic_expression .)
+
+
+state 13
+
+    (19) expression -> relational_expression .
+
+    $end            reduce using rule 19 (expression -> relational_expression .)
+
+
+state 14
+
+    (17) expression -> math_expression .
+    (66) complex_rel -> math_expression . rel_sign math_expression
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+
+    $end            reduce using rule 17 (expression -> math_expression .)
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+
+    rel_sign                       shift and go to state 57
+
+state 15
+
+    (20) expression -> assignment_expression .
+
+    $end            reduce using rule 20 (expression -> assignment_expression .)
+
+
+state 16
+
+    (21) standart_cycle -> standart_while .
+
+    $end            reduce using rule 21 (standart_cycle -> standart_while .)
+    SEMICOLON       reduce using rule 21 (standart_cycle -> standart_while .)
+    ELSE            reduce using rule 21 (standart_cycle -> standart_while .)
+    END             reduce using rule 21 (standart_cycle -> standart_while .)
+
+
+state 17
+
+    (22) standart_cycle -> standart_for .
+
+    $end            reduce using rule 22 (standart_cycle -> standart_for .)
+    SEMICOLON       reduce using rule 22 (standart_cycle -> standart_for .)
+    ELSE            reduce using rule 22 (standart_cycle -> standart_for .)
+    END             reduce using rule 22 (standart_cycle -> standart_for .)
+
+
+state 18
+
+    (68) math_expression -> simple_math .
+    (50) complex_rel -> simple_math . rel_sign ID
+    (54) complex_rel -> simple_math . rel_sign NUMBER
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+
+  ! shift/reduce conflict for MORE_OR_EQUAL resolved as shift
+  ! shift/reduce conflict for LESS_OR_EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for MORE resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for EQUALS resolved as shift
+    $end            reduce using rule 68 (math_expression -> simple_math .)
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+
+  ! MORE_OR_EQUAL   [ reduce using rule 68 (math_expression -> simple_math .) ]
+  ! LESS_OR_EQUAL   [ reduce using rule 68 (math_expression -> simple_math .) ]
+  ! NOT_EQUAL       [ reduce using rule 68 (math_expression -> simple_math .) ]
+  ! MORE            [ reduce using rule 68 (math_expression -> simple_math .) ]
+  ! LESS            [ reduce using rule 68 (math_expression -> simple_math .) ]
+  ! EQUALS          [ reduce using rule 68 (math_expression -> simple_math .) ]
+
+    rel_sign                       shift and go to state 58
+
+state 19
+
+    (69) math_expression -> complex_math .
+    (51) complex_rel -> complex_math . rel_sign ID
+    (55) complex_rel -> complex_math . rel_sign NUMBER
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+
+  ! shift/reduce conflict for MORE_OR_EQUAL resolved as shift
+  ! shift/reduce conflict for LESS_OR_EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for MORE resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for EQUALS resolved as shift
+    $end            reduce using rule 69 (math_expression -> complex_math .)
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+
+  ! MORE_OR_EQUAL   [ reduce using rule 69 (math_expression -> complex_math .) ]
+  ! LESS_OR_EQUAL   [ reduce using rule 69 (math_expression -> complex_math .) ]
+  ! NOT_EQUAL       [ reduce using rule 69 (math_expression -> complex_math .) ]
+  ! MORE            [ reduce using rule 69 (math_expression -> complex_math .) ]
+  ! LESS            [ reduce using rule 69 (math_expression -> complex_math .) ]
+  ! EQUALS          [ reduce using rule 69 (math_expression -> complex_math .) ]
+
+    rel_sign                       shift and go to state 59
+
+state 20
+
+    (70) logic_expression -> simple_logic .
+
+    $end            reduce using rule 70 (logic_expression -> simple_logic .)
+    SEMICOLON       reduce using rule 70 (logic_expression -> simple_logic .)
+    ELSE            reduce using rule 70 (logic_expression -> simple_logic .)
+    END             reduce using rule 70 (logic_expression -> simple_logic .)
+    CLOSE_BR        reduce using rule 70 (logic_expression -> simple_logic .)
+
+
+state 21
+
+    (71) logic_expression -> complex_logic .
+
+    $end            reduce using rule 71 (logic_expression -> complex_logic .)
+    SEMICOLON       reduce using rule 71 (logic_expression -> complex_logic .)
+    ELSE            reduce using rule 71 (logic_expression -> complex_logic .)
+    END             reduce using rule 71 (logic_expression -> complex_logic .)
+    CLOSE_BR        reduce using rule 71 (logic_expression -> complex_logic .)
+
+
+state 22
+
+    (48) relational_expression -> simple_rel .
+
+    $end            reduce using rule 48 (relational_expression -> simple_rel .)
+    CLOSE_BR        reduce using rule 48 (relational_expression -> simple_rel .)
+
+
+state 23
+
+    (49) relational_expression -> complex_rel .
+
+    $end            reduce using rule 49 (relational_expression -> complex_rel .)
+    CLOSE_BR        reduce using rule 49 (relational_expression -> complex_rel .)
+
+
+state 24
+
+    (87) simple_math -> NUMBER . math_sign ID
+    (88) simple_math -> NUMBER . math_sign NUMBER
+    (75) complex_math -> NUMBER . math_sign OPEN_BR simple_math CLOSE_BR
+    (56) complex_rel -> NUMBER . rel_sign simple_math
+    (57) complex_rel -> NUMBER . rel_sign complex_math
+    (64) complex_rel -> NUMBER . rel_sign OPEN_BR simple_math CLOSE_BR
+    (65) complex_rel -> NUMBER . rel_sign OPEN_BR complex_math CLOSE_BR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+
+    math_sign                      shift and go to state 60
+    rel_sign                       shift and go to state 61
+
+state 25
+
+    (37) standart_while -> WHILE . OPEN_BR logic_expression CLOSE_BR DO compound_statement
+    (38) standart_while -> WHILE . OPEN_BR logic_expression CLOSE_BR DO simple_statement
+    (39) standart_while -> WHILE . OPEN_BR relational_expression CLOSE_BR DO compound_statement
+    (40) standart_while -> WHILE . OPEN_BR relational_expression CLOSE_BR DO simple_statement
+
+    OPEN_BR         shift and go to state 62
+
+
+state 26
+
+    (41) standart_for -> FOR . ID EQUALITY NUMBER TO NUMBER DO compound_statement
+    (42) standart_for -> FOR . ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement
+
+    ID              shift and go to state 63
+
+
+state 27
+
+    (6) declarations -> VAR identifier_list . COLON type SEMICOLON
+    (7) declarations -> VAR identifier_list . COLON type SEMICOLON complex_declar
+    (29) identifier_list -> identifier_list . COMMA ID
+
+    COLON           shift and go to state 64
+    COMMA           shift and go to state 65
+
+
+state 28
+
+    (28) identifier_list -> ID .
+
+    COLON           reduce using rule 28 (identifier_list -> ID .)
+    COMMA           reduce using rule 28 (identifier_list -> ID .)
+
+
+state 29
+
+    (8) standart_subprogram -> FUNCTION ID . OPEN_BR parameter_list CLOSE_BR COLON standart_type SEMICOLON
+
+    OPEN_BR         shift and go to state 66
+
+
+state 30
+
+    (43) assignment_expression -> ID EQUALITY . NUMBER
+    (44) assignment_expression -> ID EQUALITY . QUOTE ID QUOTE
+    (45) assignment_expression -> ID EQUALITY . boolean_value
+    (46) assignment_expression -> ID EQUALITY . math_expression
+    (47) assignment_expression -> ID EQUALITY . logic_expression
+    (108) boolean_value -> . TRUE
+    (109) boolean_value -> . FALSE
+    (68) math_expression -> . simple_math
+    (69) math_expression -> . complex_math
+    (70) logic_expression -> . simple_logic
+    (71) logic_expression -> . complex_logic
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (96) simple_logic -> . ID log_sign ID
+    (81) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign ID
+    (82) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (83) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign ID
+    (84) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+
+    NUMBER          shift and go to state 67
+    QUOTE           shift and go to state 68
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
+    ID              shift and go to state 50
+    OPEN_BR         shift and go to state 48
+
+    boolean_value                  shift and go to state 69
+    math_expression                shift and go to state 70
+    logic_expression               shift and go to state 71
+    simple_math                    shift and go to state 74
+    complex_math                   shift and go to state 75
+    simple_logic                   shift and go to state 20
+    complex_logic                  shift and go to state 21
+
+state 31
+
+    (85) simple_math -> ID math_sign . ID
+    (86) simple_math -> ID math_sign . NUMBER
+    (74) complex_math -> ID math_sign . OPEN_BR simple_math CLOSE_BR
+
+    ID              shift and go to state 76
+    NUMBER          shift and go to state 77
+    OPEN_BR         shift and go to state 78
+
+
+state 32
+
+    (96) simple_logic -> ID log_sign . ID
+
+    ID              shift and go to state 79
+
+
+state 33
+
+    (97) simple_rel -> ID rel_sign . ID
+    (98) simple_rel -> ID rel_sign . NUMBER
+    (99) simple_rel -> ID rel_sign . QUOTE ID QUOTE
+    (52) complex_rel -> ID rel_sign . simple_math
+    (53) complex_rel -> ID rel_sign . complex_math
+    (60) complex_rel -> ID rel_sign . OPEN_BR simple_math CLOSE_BR
+    (61) complex_rel -> ID rel_sign . OPEN_BR complex_math CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    ID              shift and go to state 80
+    NUMBER          shift and go to state 81
+    QUOTE           shift and go to state 82
+    OPEN_BR         shift and go to state 85
+
+    simple_math                    shift and go to state 83
+    complex_math                   shift and go to state 84
+
+state 34
+
+    (110) math_sign -> PLUS .
+
+    ID              reduce using rule 110 (math_sign -> PLUS .)
+    NUMBER          reduce using rule 110 (math_sign -> PLUS .)
+    OPEN_BR         reduce using rule 110 (math_sign -> PLUS .)
+
+
+state 35
+
+    (111) math_sign -> MINUS .
+
+    ID              reduce using rule 111 (math_sign -> MINUS .)
+    NUMBER          reduce using rule 111 (math_sign -> MINUS .)
+    OPEN_BR         reduce using rule 111 (math_sign -> MINUS .)
+
+
+state 36
+
+    (112) math_sign -> DIVISION .
+
+    ID              reduce using rule 112 (math_sign -> DIVISION .)
+    NUMBER          reduce using rule 112 (math_sign -> DIVISION .)
+    OPEN_BR         reduce using rule 112 (math_sign -> DIVISION .)
+
+
+state 37
+
+    (113) math_sign -> MULTIPLICATION .
+
+    ID              reduce using rule 113 (math_sign -> MULTIPLICATION .)
+    NUMBER          reduce using rule 113 (math_sign -> MULTIPLICATION .)
+    OPEN_BR         reduce using rule 113 (math_sign -> MULTIPLICATION .)
+
+
+state 38
+
+    (114) math_sign -> DIV .
+
+    ID              reduce using rule 114 (math_sign -> DIV .)
+    NUMBER          reduce using rule 114 (math_sign -> DIV .)
+    OPEN_BR         reduce using rule 114 (math_sign -> DIV .)
+
+
+state 39
+
+    (115) math_sign -> MOD .
+
+    ID              reduce using rule 115 (math_sign -> MOD .)
+    NUMBER          reduce using rule 115 (math_sign -> MOD .)
+    OPEN_BR         reduce using rule 115 (math_sign -> MOD .)
+
+
+state 40
+
+    (100) log_sign -> AND .
+
+    ID              reduce using rule 100 (log_sign -> AND .)
+    OPEN_BR         reduce using rule 100 (log_sign -> AND .)
+
+
+state 41
+
+    (101) log_sign -> OR .
+
+    ID              reduce using rule 101 (log_sign -> OR .)
+    OPEN_BR         reduce using rule 101 (log_sign -> OR .)
+
+
+state 42
+
+    (102) rel_sign -> MORE_OR_EQUAL .
+
+    ID              reduce using rule 102 (rel_sign -> MORE_OR_EQUAL .)
+    NUMBER          reduce using rule 102 (rel_sign -> MORE_OR_EQUAL .)
+    QUOTE           reduce using rule 102 (rel_sign -> MORE_OR_EQUAL .)
+    OPEN_BR         reduce using rule 102 (rel_sign -> MORE_OR_EQUAL .)
+
+
+state 43
+
+    (103) rel_sign -> LESS_OR_EQUAL .
+
+    ID              reduce using rule 103 (rel_sign -> LESS_OR_EQUAL .)
+    NUMBER          reduce using rule 103 (rel_sign -> LESS_OR_EQUAL .)
+    QUOTE           reduce using rule 103 (rel_sign -> LESS_OR_EQUAL .)
+    OPEN_BR         reduce using rule 103 (rel_sign -> LESS_OR_EQUAL .)
+
+
+state 44
+
+    (104) rel_sign -> NOT_EQUAL .
+
+    ID              reduce using rule 104 (rel_sign -> NOT_EQUAL .)
+    NUMBER          reduce using rule 104 (rel_sign -> NOT_EQUAL .)
+    QUOTE           reduce using rule 104 (rel_sign -> NOT_EQUAL .)
+    OPEN_BR         reduce using rule 104 (rel_sign -> NOT_EQUAL .)
+
+
+state 45
+
+    (105) rel_sign -> MORE .
+
+    ID              reduce using rule 105 (rel_sign -> MORE .)
+    NUMBER          reduce using rule 105 (rel_sign -> MORE .)
+    QUOTE           reduce using rule 105 (rel_sign -> MORE .)
+    OPEN_BR         reduce using rule 105 (rel_sign -> MORE .)
+
+
+state 46
+
+    (106) rel_sign -> LESS .
+
+    ID              reduce using rule 106 (rel_sign -> LESS .)
+    NUMBER          reduce using rule 106 (rel_sign -> LESS .)
+    QUOTE           reduce using rule 106 (rel_sign -> LESS .)
+    OPEN_BR         reduce using rule 106 (rel_sign -> LESS .)
+
+
+state 47
+
+    (107) rel_sign -> EQUALS .
+
+    ID              reduce using rule 107 (rel_sign -> EQUALS .)
+    NUMBER          reduce using rule 107 (rel_sign -> EQUALS .)
+    QUOTE           reduce using rule 107 (rel_sign -> EQUALS .)
+    OPEN_BR         reduce using rule 107 (rel_sign -> EQUALS .)
+
+
+state 48
+
+    (72) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign NUMBER
+    (76) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (81) complex_logic -> OPEN_BR . simple_logic CLOSE_BR log_sign ID
+    (82) complex_logic -> OPEN_BR . simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (83) complex_logic -> OPEN_BR . complex_logic CLOSE_BR log_sign ID
+    (84) complex_logic -> OPEN_BR . complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (96) simple_logic -> . ID log_sign ID
+    (81) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign ID
+    (82) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (83) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign ID
+    (84) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+
+    ID              shift and go to state 50
+    NUMBER          shift and go to state 51
+    OPEN_BR         shift and go to state 48
+
+    simple_math                    shift and go to state 86
+    complex_math                   shift and go to state 87
+    simple_logic                   shift and go to state 53
+    complex_logic                  shift and go to state 54
+
+state 49
+
+    (72) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign ID
+    (73) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign NUMBER
+    (76) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (58) complex_rel -> OPEN_BR simple_math . CLOSE_BR rel_sign ID
+    (62) complex_rel -> OPEN_BR simple_math . CLOSE_BR rel_sign NUMBER
+    (68) math_expression -> simple_math .
+
+  ! shift/reduce conflict for CLOSE_BR resolved as shift
+    CLOSE_BR        shift and go to state 88
+
+  ! CLOSE_BR        [ reduce using rule 68 (math_expression -> simple_math .) ]
+
+
+state 50
+
+    (85) simple_math -> ID . math_sign ID
+    (86) simple_math -> ID . math_sign NUMBER
+    (74) complex_math -> ID . math_sign OPEN_BR simple_math CLOSE_BR
+    (96) simple_logic -> ID . log_sign ID
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+    (100) log_sign -> . AND
+    (101) log_sign -> . OR
+
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+    AND             shift and go to state 40
+    OR              shift and go to state 41
+
+    math_sign                      shift and go to state 31
+    log_sign                       shift and go to state 32
+
+state 51
+
+    (87) simple_math -> NUMBER . math_sign ID
+    (88) simple_math -> NUMBER . math_sign NUMBER
+    (75) complex_math -> NUMBER . math_sign OPEN_BR simple_math CLOSE_BR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    math_sign                      shift and go to state 60
+
+state 52
+
+    (78) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign ID
+    (79) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (59) complex_rel -> OPEN_BR complex_math . CLOSE_BR rel_sign ID
+    (63) complex_rel -> OPEN_BR complex_math . CLOSE_BR rel_sign NUMBER
+    (69) math_expression -> complex_math .
+
+  ! shift/reduce conflict for CLOSE_BR resolved as shift
+    CLOSE_BR        shift and go to state 89
+
+  ! CLOSE_BR        [ reduce using rule 69 (math_expression -> complex_math .) ]
+
+
+state 53
+
+    (81) complex_logic -> OPEN_BR simple_logic . CLOSE_BR log_sign ID
+    (82) complex_logic -> OPEN_BR simple_logic . CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+
+    CLOSE_BR        shift and go to state 90
+
+
+state 54
+
+    (83) complex_logic -> OPEN_BR complex_logic . CLOSE_BR log_sign ID
+    (84) complex_logic -> OPEN_BR complex_logic . CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+
+    CLOSE_BR        shift and go to state 91
+
+
+state 55
+
+    (67) complex_rel -> OPEN_BR math_expression . CLOSE_BR rel_sign OPEN_BR math_expression CLOSE_BR
+
+    CLOSE_BR        shift and go to state 92
+
+
+state 56
+
+    (9) if_statement -> IF OPEN_BR . logic_expression CLOSE_BR EQUALS boolean_value then_else_statement
+    (10) if_statement -> IF OPEN_BR . relational_expression CLOSE_BR then_else_statement
+    (70) logic_expression -> . simple_logic
+    (71) logic_expression -> . complex_logic
+    (48) relational_expression -> . simple_rel
+    (49) relational_expression -> . complex_rel
+    (96) simple_logic -> . ID log_sign ID
+    (81) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign ID
+    (82) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (83) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign ID
+    (84) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (97) simple_rel -> . ID rel_sign ID
+    (98) simple_rel -> . ID rel_sign NUMBER
+    (99) simple_rel -> . ID rel_sign QUOTE ID QUOTE
+    (50) complex_rel -> . simple_math rel_sign ID
+    (51) complex_rel -> . complex_math rel_sign ID
+    (52) complex_rel -> . ID rel_sign simple_math
+    (53) complex_rel -> . ID rel_sign complex_math
+    (54) complex_rel -> . simple_math rel_sign NUMBER
+    (55) complex_rel -> . complex_math rel_sign NUMBER
+    (56) complex_rel -> . NUMBER rel_sign simple_math
+    (57) complex_rel -> . NUMBER rel_sign complex_math
+    (58) complex_rel -> . OPEN_BR simple_math CLOSE_BR rel_sign ID
+    (59) complex_rel -> . OPEN_BR complex_math CLOSE_BR rel_sign ID
+    (60) complex_rel -> . ID rel_sign OPEN_BR simple_math CLOSE_BR
+    (61) complex_rel -> . ID rel_sign OPEN_BR complex_math CLOSE_BR
+    (62) complex_rel -> . OPEN_BR simple_math CLOSE_BR rel_sign NUMBER
+    (63) complex_rel -> . OPEN_BR complex_math CLOSE_BR rel_sign NUMBER
+    (64) complex_rel -> . NUMBER rel_sign OPEN_BR simple_math CLOSE_BR
+    (65) complex_rel -> . NUMBER rel_sign OPEN_BR complex_math CLOSE_BR
+    (66) complex_rel -> . math_expression rel_sign math_expression
+    (67) complex_rel -> . OPEN_BR math_expression CLOSE_BR rel_sign OPEN_BR math_expression CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (68) math_expression -> . simple_math
+    (69) math_expression -> . complex_math
+
+    ID              shift and go to state 96
+    OPEN_BR         shift and go to state 93
+    NUMBER          shift and go to state 97
+
+    logic_expression               shift and go to state 94
+    relational_expression          shift and go to state 95
+    simple_logic                   shift and go to state 20
+    complex_logic                  shift and go to state 21
+    simple_rel                     shift and go to state 22
+    complex_rel                    shift and go to state 23
+    simple_math                    shift and go to state 98
+    complex_math                   shift and go to state 99
+    math_expression                shift and go to state 100
+
+state 57
+
+    (66) complex_rel -> math_expression rel_sign . math_expression
+    (68) math_expression -> . simple_math
+    (69) math_expression -> . complex_math
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    ID              shift and go to state 102
+    NUMBER          shift and go to state 51
+    OPEN_BR         shift and go to state 103
+
+    math_expression                shift and go to state 101
+    simple_math                    shift and go to state 74
+    complex_math                   shift and go to state 75
+
+state 58
+
+    (50) complex_rel -> simple_math rel_sign . ID
+    (54) complex_rel -> simple_math rel_sign . NUMBER
+
+    ID              shift and go to state 104
+    NUMBER          shift and go to state 105
+
+
+state 59
+
+    (51) complex_rel -> complex_math rel_sign . ID
+    (55) complex_rel -> complex_math rel_sign . NUMBER
+
+    ID              shift and go to state 106
+    NUMBER          shift and go to state 107
+
+
+state 60
+
+    (87) simple_math -> NUMBER math_sign . ID
+    (88) simple_math -> NUMBER math_sign . NUMBER
+    (75) complex_math -> NUMBER math_sign . OPEN_BR simple_math CLOSE_BR
+
+    ID              shift and go to state 109
+    NUMBER          shift and go to state 108
+    OPEN_BR         shift and go to state 110
+
+
+state 61
+
+    (56) complex_rel -> NUMBER rel_sign . simple_math
+    (57) complex_rel -> NUMBER rel_sign . complex_math
+    (64) complex_rel -> NUMBER rel_sign . OPEN_BR simple_math CLOSE_BR
+    (65) complex_rel -> NUMBER rel_sign . OPEN_BR complex_math CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    OPEN_BR         shift and go to state 113
+    ID              shift and go to state 102
+    NUMBER          shift and go to state 51
+
+    simple_math                    shift and go to state 111
+    complex_math                   shift and go to state 112
+
+state 62
+
+    (37) standart_while -> WHILE OPEN_BR . logic_expression CLOSE_BR DO compound_statement
+    (38) standart_while -> WHILE OPEN_BR . logic_expression CLOSE_BR DO simple_statement
+    (39) standart_while -> WHILE OPEN_BR . relational_expression CLOSE_BR DO compound_statement
+    (40) standart_while -> WHILE OPEN_BR . relational_expression CLOSE_BR DO simple_statement
+    (70) logic_expression -> . simple_logic
+    (71) logic_expression -> . complex_logic
+    (48) relational_expression -> . simple_rel
+    (49) relational_expression -> . complex_rel
+    (96) simple_logic -> . ID log_sign ID
+    (81) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign ID
+    (82) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (83) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign ID
+    (84) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (97) simple_rel -> . ID rel_sign ID
+    (98) simple_rel -> . ID rel_sign NUMBER
+    (99) simple_rel -> . ID rel_sign QUOTE ID QUOTE
+    (50) complex_rel -> . simple_math rel_sign ID
+    (51) complex_rel -> . complex_math rel_sign ID
+    (52) complex_rel -> . ID rel_sign simple_math
+    (53) complex_rel -> . ID rel_sign complex_math
+    (54) complex_rel -> . simple_math rel_sign NUMBER
+    (55) complex_rel -> . complex_math rel_sign NUMBER
+    (56) complex_rel -> . NUMBER rel_sign simple_math
+    (57) complex_rel -> . NUMBER rel_sign complex_math
+    (58) complex_rel -> . OPEN_BR simple_math CLOSE_BR rel_sign ID
+    (59) complex_rel -> . OPEN_BR complex_math CLOSE_BR rel_sign ID
+    (60) complex_rel -> . ID rel_sign OPEN_BR simple_math CLOSE_BR
+    (61) complex_rel -> . ID rel_sign OPEN_BR complex_math CLOSE_BR
+    (62) complex_rel -> . OPEN_BR simple_math CLOSE_BR rel_sign NUMBER
+    (63) complex_rel -> . OPEN_BR complex_math CLOSE_BR rel_sign NUMBER
+    (64) complex_rel -> . NUMBER rel_sign OPEN_BR simple_math CLOSE_BR
+    (65) complex_rel -> . NUMBER rel_sign OPEN_BR complex_math CLOSE_BR
+    (66) complex_rel -> . math_expression rel_sign math_expression
+    (67) complex_rel -> . OPEN_BR math_expression CLOSE_BR rel_sign OPEN_BR math_expression CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (68) math_expression -> . simple_math
+    (69) math_expression -> . complex_math
+
+    ID              shift and go to state 96
+    OPEN_BR         shift and go to state 93
+    NUMBER          shift and go to state 97
+
+    logic_expression               shift and go to state 114
+    relational_expression          shift and go to state 115
+    simple_logic                   shift and go to state 20
+    complex_logic                  shift and go to state 21
+    simple_rel                     shift and go to state 22
+    complex_rel                    shift and go to state 23
+    simple_math                    shift and go to state 98
+    complex_math                   shift and go to state 99
+    math_expression                shift and go to state 100
+
+state 63
+
+    (41) standart_for -> FOR ID . EQUALITY NUMBER TO NUMBER DO compound_statement
+    (42) standart_for -> FOR ID . EQUALITY NUMBER DOWNTO NUMBER DO compound_statement
+
+    EQUALITY        shift and go to state 116
+
+
+state 64
+
+    (6) declarations -> VAR identifier_list COLON . type SEMICOLON
+    (7) declarations -> VAR identifier_list COLON . type SEMICOLON complex_declar
+    (25) type -> . standart_type
+    (26) type -> . ARRAY OPEN_SQUARE_BR NUMBER POINT POINT NUMBER CLOSE_SQUARE_BR OF standart_type
+    (27) type -> . standart_string
+    (32) standart_type -> . INTEGER
+    (33) standart_type -> . CHAR
+    (34) standart_type -> . BOOLEAN
+    (35) standart_string -> . STRING
+    (36) standart_string -> . STRING OPEN_SQUARE_BR NUMBER CLOSE_SQUARE_BR
+
+    ARRAY           shift and go to state 119
+    INTEGER         shift and go to state 121
+    CHAR            shift and go to state 122
+    BOOLEAN         shift and go to state 123
+    STRING          shift and go to state 124
+
+    type                           shift and go to state 117
+    standart_type                  shift and go to state 118
+    standart_string                shift and go to state 120
+
+state 65
+
+    (29) identifier_list -> identifier_list COMMA . ID
+
+    ID              shift and go to state 125
+
+
+state 66
+
+    (8) standart_subprogram -> FUNCTION ID OPEN_BR . parameter_list CLOSE_BR COLON standart_type SEMICOLON
+    (23) parameter_list -> . identifier_list COLON type
+    (24) parameter_list -> . parameter_list SEMICOLON identifier_list COLON type
+    (28) identifier_list -> . ID
+    (29) identifier_list -> . identifier_list COMMA ID
+
+    ID              shift and go to state 28
+
+    parameter_list                 shift and go to state 126
+    identifier_list                shift and go to state 127
+
+state 67
+
+    (43) assignment_expression -> ID EQUALITY NUMBER .
+    (87) simple_math -> NUMBER . math_sign ID
+    (88) simple_math -> NUMBER . math_sign NUMBER
+    (75) complex_math -> NUMBER . math_sign OPEN_BR simple_math CLOSE_BR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    $end            reduce using rule 43 (assignment_expression -> ID EQUALITY NUMBER .)
+    SEMICOLON       reduce using rule 43 (assignment_expression -> ID EQUALITY NUMBER .)
+    ELSE            reduce using rule 43 (assignment_expression -> ID EQUALITY NUMBER .)
+    END             reduce using rule 43 (assignment_expression -> ID EQUALITY NUMBER .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    math_sign                      shift and go to state 60
+
+state 68
+
+    (44) assignment_expression -> ID EQUALITY QUOTE . ID QUOTE
+
+    ID              shift and go to state 128
+
+
+state 69
+
+    (45) assignment_expression -> ID EQUALITY boolean_value .
+
+    $end            reduce using rule 45 (assignment_expression -> ID EQUALITY boolean_value .)
+    SEMICOLON       reduce using rule 45 (assignment_expression -> ID EQUALITY boolean_value .)
+    ELSE            reduce using rule 45 (assignment_expression -> ID EQUALITY boolean_value .)
+    END             reduce using rule 45 (assignment_expression -> ID EQUALITY boolean_value .)
+
+
+state 70
+
+    (46) assignment_expression -> ID EQUALITY math_expression .
+
+    $end            reduce using rule 46 (assignment_expression -> ID EQUALITY math_expression .)
+    SEMICOLON       reduce using rule 46 (assignment_expression -> ID EQUALITY math_expression .)
+    ELSE            reduce using rule 46 (assignment_expression -> ID EQUALITY math_expression .)
+    END             reduce using rule 46 (assignment_expression -> ID EQUALITY math_expression .)
+
+
+state 71
+
+    (47) assignment_expression -> ID EQUALITY logic_expression .
+
+    $end            reduce using rule 47 (assignment_expression -> ID EQUALITY logic_expression .)
+    SEMICOLON       reduce using rule 47 (assignment_expression -> ID EQUALITY logic_expression .)
+    ELSE            reduce using rule 47 (assignment_expression -> ID EQUALITY logic_expression .)
+    END             reduce using rule 47 (assignment_expression -> ID EQUALITY logic_expression .)
+
+
+state 72
+
+    (108) boolean_value -> TRUE .
+
+    $end            reduce using rule 108 (boolean_value -> TRUE .)
+    SEMICOLON       reduce using rule 108 (boolean_value -> TRUE .)
+    ELSE            reduce using rule 108 (boolean_value -> TRUE .)
+    END             reduce using rule 108 (boolean_value -> TRUE .)
+    THEN            reduce using rule 108 (boolean_value -> TRUE .)
+
+
+state 73
+
+    (109) boolean_value -> FALSE .
+
+    $end            reduce using rule 109 (boolean_value -> FALSE .)
+    SEMICOLON       reduce using rule 109 (boolean_value -> FALSE .)
+    ELSE            reduce using rule 109 (boolean_value -> FALSE .)
+    END             reduce using rule 109 (boolean_value -> FALSE .)
+    THEN            reduce using rule 109 (boolean_value -> FALSE .)
+
+
+state 74
+
+    (68) math_expression -> simple_math .
+
+    $end            reduce using rule 68 (math_expression -> simple_math .)
+    SEMICOLON       reduce using rule 68 (math_expression -> simple_math .)
+    ELSE            reduce using rule 68 (math_expression -> simple_math .)
+    END             reduce using rule 68 (math_expression -> simple_math .)
+    CLOSE_BR        reduce using rule 68 (math_expression -> simple_math .)
+
+
+state 75
+
+    (69) math_expression -> complex_math .
+
+    $end            reduce using rule 69 (math_expression -> complex_math .)
+    SEMICOLON       reduce using rule 69 (math_expression -> complex_math .)
+    ELSE            reduce using rule 69 (math_expression -> complex_math .)
+    END             reduce using rule 69 (math_expression -> complex_math .)
+    CLOSE_BR        reduce using rule 69 (math_expression -> complex_math .)
+
+
+state 76
+
+    (85) simple_math -> ID math_sign ID .
+
+    MORE_OR_EQUAL   reduce using rule 85 (simple_math -> ID math_sign ID .)
+    LESS_OR_EQUAL   reduce using rule 85 (simple_math -> ID math_sign ID .)
+    NOT_EQUAL       reduce using rule 85 (simple_math -> ID math_sign ID .)
+    MORE            reduce using rule 85 (simple_math -> ID math_sign ID .)
+    LESS            reduce using rule 85 (simple_math -> ID math_sign ID .)
+    EQUALS          reduce using rule 85 (simple_math -> ID math_sign ID .)
+    $end            reduce using rule 85 (simple_math -> ID math_sign ID .)
+    CLOSE_BR        reduce using rule 85 (simple_math -> ID math_sign ID .)
+    SEMICOLON       reduce using rule 85 (simple_math -> ID math_sign ID .)
+    ELSE            reduce using rule 85 (simple_math -> ID math_sign ID .)
+    END             reduce using rule 85 (simple_math -> ID math_sign ID .)
+
+
+state 77
+
+    (86) simple_math -> ID math_sign NUMBER .
+
+    MORE_OR_EQUAL   reduce using rule 86 (simple_math -> ID math_sign NUMBER .)
+    LESS_OR_EQUAL   reduce using rule 86 (simple_math -> ID math_sign NUMBER .)
+    NOT_EQUAL       reduce using rule 86 (simple_math -> ID math_sign NUMBER .)
+    MORE            reduce using rule 86 (simple_math -> ID math_sign NUMBER .)
+    LESS            reduce using rule 86 (simple_math -> ID math_sign NUMBER .)
+    EQUALS          reduce using rule 86 (simple_math -> ID math_sign NUMBER .)
+    $end            reduce using rule 86 (simple_math -> ID math_sign NUMBER .)
+    CLOSE_BR        reduce using rule 86 (simple_math -> ID math_sign NUMBER .)
+    SEMICOLON       reduce using rule 86 (simple_math -> ID math_sign NUMBER .)
+    ELSE            reduce using rule 86 (simple_math -> ID math_sign NUMBER .)
+    END             reduce using rule 86 (simple_math -> ID math_sign NUMBER .)
+
+
+state 78
+
+    (74) complex_math -> ID math_sign OPEN_BR . simple_math CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+
+    ID              shift and go to state 129
+    NUMBER          shift and go to state 131
+
+    simple_math                    shift and go to state 130
+
+state 79
+
+    (96) simple_logic -> ID log_sign ID .
+
+    $end            reduce using rule 96 (simple_logic -> ID log_sign ID .)
+    CLOSE_BR        reduce using rule 96 (simple_logic -> ID log_sign ID .)
+    SEMICOLON       reduce using rule 96 (simple_logic -> ID log_sign ID .)
+    ELSE            reduce using rule 96 (simple_logic -> ID log_sign ID .)
+    END             reduce using rule 96 (simple_logic -> ID log_sign ID .)
+
+
+state 80
+
+    (97) simple_rel -> ID rel_sign ID .
+    (85) simple_math -> ID . math_sign ID
+    (86) simple_math -> ID . math_sign NUMBER
+    (74) complex_math -> ID . math_sign OPEN_BR simple_math CLOSE_BR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    $end            reduce using rule 97 (simple_rel -> ID rel_sign ID .)
+    CLOSE_BR        reduce using rule 97 (simple_rel -> ID rel_sign ID .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    math_sign                      shift and go to state 31
+
+state 81
+
+    (98) simple_rel -> ID rel_sign NUMBER .
+    (87) simple_math -> NUMBER . math_sign ID
+    (88) simple_math -> NUMBER . math_sign NUMBER
+    (75) complex_math -> NUMBER . math_sign OPEN_BR simple_math CLOSE_BR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    $end            reduce using rule 98 (simple_rel -> ID rel_sign NUMBER .)
+    CLOSE_BR        reduce using rule 98 (simple_rel -> ID rel_sign NUMBER .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    math_sign                      shift and go to state 60
+
+state 82
+
+    (99) simple_rel -> ID rel_sign QUOTE . ID QUOTE
+
+    ID              shift and go to state 132
+
+
+state 83
+
+    (52) complex_rel -> ID rel_sign simple_math .
+
+    $end            reduce using rule 52 (complex_rel -> ID rel_sign simple_math .)
+    CLOSE_BR        reduce using rule 52 (complex_rel -> ID rel_sign simple_math .)
+
+
+state 84
+
+    (53) complex_rel -> ID rel_sign complex_math .
+
+    $end            reduce using rule 53 (complex_rel -> ID rel_sign complex_math .)
+    CLOSE_BR        reduce using rule 53 (complex_rel -> ID rel_sign complex_math .)
+
+
+state 85
+
+    (60) complex_rel -> ID rel_sign OPEN_BR . simple_math CLOSE_BR
+    (61) complex_rel -> ID rel_sign OPEN_BR . complex_math CLOSE_BR
+    (72) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign NUMBER
+    (76) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    ID              shift and go to state 102
+    NUMBER          shift and go to state 51
+    OPEN_BR         shift and go to state 103
+
+    simple_math                    shift and go to state 133
+    complex_math                   shift and go to state 134
+
+state 86
+
+    (72) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign ID
+    (73) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign NUMBER
+    (76) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    CLOSE_BR        shift and go to state 135
+
+
+state 87
+
+    (78) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign ID
+    (79) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    CLOSE_BR        shift and go to state 136
+
+
+state 88
+
+    (72) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign ID
+    (73) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign NUMBER
+    (76) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign OPEN_BR complex_math CLOSE_BR
+    (58) complex_rel -> OPEN_BR simple_math CLOSE_BR . rel_sign ID
+    (62) complex_rel -> OPEN_BR simple_math CLOSE_BR . rel_sign NUMBER
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+
+    math_sign                      shift and go to state 137
+    rel_sign                       shift and go to state 138
+
+state 89
+
+    (78) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign ID
+    (79) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign OPEN_BR complex_math CLOSE_BR
+    (59) complex_rel -> OPEN_BR complex_math CLOSE_BR . rel_sign ID
+    (63) complex_rel -> OPEN_BR complex_math CLOSE_BR . rel_sign NUMBER
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+
+    math_sign                      shift and go to state 139
+    rel_sign                       shift and go to state 140
+
+state 90
+
+    (81) complex_logic -> OPEN_BR simple_logic CLOSE_BR . log_sign ID
+    (82) complex_logic -> OPEN_BR simple_logic CLOSE_BR . log_sign OPEN_BR simple_logic CLOSE_BR
+    (100) log_sign -> . AND
+    (101) log_sign -> . OR
+
+    AND             shift and go to state 40
+    OR              shift and go to state 41
+
+    log_sign                       shift and go to state 141
+
+state 91
+
+    (83) complex_logic -> OPEN_BR complex_logic CLOSE_BR . log_sign ID
+    (84) complex_logic -> OPEN_BR complex_logic CLOSE_BR . log_sign OPEN_BR simple_logic CLOSE_BR
+    (100) log_sign -> . AND
+    (101) log_sign -> . OR
+
+    AND             shift and go to state 40
+    OR              shift and go to state 41
+
+    log_sign                       shift and go to state 142
+
+state 92
+
+    (67) complex_rel -> OPEN_BR math_expression CLOSE_BR . rel_sign OPEN_BR math_expression CLOSE_BR
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+
+    rel_sign                       shift and go to state 143
+
+state 93
+
+    (81) complex_logic -> OPEN_BR . simple_logic CLOSE_BR log_sign ID
+    (82) complex_logic -> OPEN_BR . simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (83) complex_logic -> OPEN_BR . complex_logic CLOSE_BR log_sign ID
+    (84) complex_logic -> OPEN_BR . complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (58) complex_rel -> OPEN_BR . simple_math CLOSE_BR rel_sign ID
+    (59) complex_rel -> OPEN_BR . complex_math CLOSE_BR rel_sign ID
+    (62) complex_rel -> OPEN_BR . simple_math CLOSE_BR rel_sign NUMBER
+    (63) complex_rel -> OPEN_BR . complex_math CLOSE_BR rel_sign NUMBER
+    (67) complex_rel -> OPEN_BR . math_expression CLOSE_BR rel_sign OPEN_BR math_expression CLOSE_BR
+    (72) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign NUMBER
+    (76) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (96) simple_logic -> . ID log_sign ID
+    (81) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign ID
+    (82) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (83) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign ID
+    (84) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (68) math_expression -> . simple_math
+    (69) math_expression -> . complex_math
+
+    ID              shift and go to state 145
+    OPEN_BR         shift and go to state 144
+    NUMBER          shift and go to state 51
+
+    simple_logic                   shift and go to state 53
+    complex_logic                  shift and go to state 54
+    simple_math                    shift and go to state 146
+    complex_math                   shift and go to state 147
+    math_expression                shift and go to state 55
+
+state 94
+
+    (9) if_statement -> IF OPEN_BR logic_expression . CLOSE_BR EQUALS boolean_value then_else_statement
+
+    CLOSE_BR        shift and go to state 148
+
+
+state 95
+
+    (10) if_statement -> IF OPEN_BR relational_expression . CLOSE_BR then_else_statement
+
+    CLOSE_BR        shift and go to state 149
+
+
+state 96
+
+    (96) simple_logic -> ID . log_sign ID
+    (97) simple_rel -> ID . rel_sign ID
+    (98) simple_rel -> ID . rel_sign NUMBER
+    (99) simple_rel -> ID . rel_sign QUOTE ID QUOTE
+    (52) complex_rel -> ID . rel_sign simple_math
+    (53) complex_rel -> ID . rel_sign complex_math
+    (60) complex_rel -> ID . rel_sign OPEN_BR simple_math CLOSE_BR
+    (61) complex_rel -> ID . rel_sign OPEN_BR complex_math CLOSE_BR
+    (85) simple_math -> ID . math_sign ID
+    (86) simple_math -> ID . math_sign NUMBER
+    (74) complex_math -> ID . math_sign OPEN_BR simple_math CLOSE_BR
+    (100) log_sign -> . AND
+    (101) log_sign -> . OR
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    AND             shift and go to state 40
+    OR              shift and go to state 41
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    log_sign                       shift and go to state 32
+    rel_sign                       shift and go to state 33
+    math_sign                      shift and go to state 31
+
+state 97
+
+    (56) complex_rel -> NUMBER . rel_sign simple_math
+    (57) complex_rel -> NUMBER . rel_sign complex_math
+    (64) complex_rel -> NUMBER . rel_sign OPEN_BR simple_math CLOSE_BR
+    (65) complex_rel -> NUMBER . rel_sign OPEN_BR complex_math CLOSE_BR
+    (87) simple_math -> NUMBER . math_sign ID
+    (88) simple_math -> NUMBER . math_sign NUMBER
+    (75) complex_math -> NUMBER . math_sign OPEN_BR simple_math CLOSE_BR
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    rel_sign                       shift and go to state 61
+    math_sign                      shift and go to state 60
+
+state 98
+
+    (50) complex_rel -> simple_math . rel_sign ID
+    (54) complex_rel -> simple_math . rel_sign NUMBER
+    (68) math_expression -> simple_math .
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+
+  ! shift/reduce conflict for MORE_OR_EQUAL resolved as shift
+  ! shift/reduce conflict for LESS_OR_EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for MORE resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for EQUALS resolved as shift
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+
+  ! MORE_OR_EQUAL   [ reduce using rule 68 (math_expression -> simple_math .) ]
+  ! LESS_OR_EQUAL   [ reduce using rule 68 (math_expression -> simple_math .) ]
+  ! NOT_EQUAL       [ reduce using rule 68 (math_expression -> simple_math .) ]
+  ! MORE            [ reduce using rule 68 (math_expression -> simple_math .) ]
+  ! LESS            [ reduce using rule 68 (math_expression -> simple_math .) ]
+  ! EQUALS          [ reduce using rule 68 (math_expression -> simple_math .) ]
+
+    rel_sign                       shift and go to state 58
+
+state 99
+
+    (51) complex_rel -> complex_math . rel_sign ID
+    (55) complex_rel -> complex_math . rel_sign NUMBER
+    (69) math_expression -> complex_math .
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+
+  ! shift/reduce conflict for MORE_OR_EQUAL resolved as shift
+  ! shift/reduce conflict for LESS_OR_EQUAL resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for MORE resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for EQUALS resolved as shift
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+
+  ! MORE_OR_EQUAL   [ reduce using rule 69 (math_expression -> complex_math .) ]
+  ! LESS_OR_EQUAL   [ reduce using rule 69 (math_expression -> complex_math .) ]
+  ! NOT_EQUAL       [ reduce using rule 69 (math_expression -> complex_math .) ]
+  ! MORE            [ reduce using rule 69 (math_expression -> complex_math .) ]
+  ! LESS            [ reduce using rule 69 (math_expression -> complex_math .) ]
+  ! EQUALS          [ reduce using rule 69 (math_expression -> complex_math .) ]
+
+    rel_sign                       shift and go to state 59
+
+state 100
+
+    (66) complex_rel -> math_expression . rel_sign math_expression
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+
+    rel_sign                       shift and go to state 57
+
+state 101
+
+    (66) complex_rel -> math_expression rel_sign math_expression .
+
+    $end            reduce using rule 66 (complex_rel -> math_expression rel_sign math_expression .)
+    CLOSE_BR        reduce using rule 66 (complex_rel -> math_expression rel_sign math_expression .)
+
+
+state 102
+
+    (85) simple_math -> ID . math_sign ID
+    (86) simple_math -> ID . math_sign NUMBER
+    (74) complex_math -> ID . math_sign OPEN_BR simple_math CLOSE_BR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    math_sign                      shift and go to state 31
+
+state 103
+
+    (72) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign NUMBER
+    (76) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    ID              shift and go to state 102
+    NUMBER          shift and go to state 51
+    OPEN_BR         shift and go to state 103
+
+    simple_math                    shift and go to state 86
+    complex_math                   shift and go to state 87
+
+state 104
+
+    (50) complex_rel -> simple_math rel_sign ID .
+
+    $end            reduce using rule 50 (complex_rel -> simple_math rel_sign ID .)
+    CLOSE_BR        reduce using rule 50 (complex_rel -> simple_math rel_sign ID .)
+
+
+state 105
+
+    (54) complex_rel -> simple_math rel_sign NUMBER .
+
+    $end            reduce using rule 54 (complex_rel -> simple_math rel_sign NUMBER .)
+    CLOSE_BR        reduce using rule 54 (complex_rel -> simple_math rel_sign NUMBER .)
+
+
+state 106
+
+    (51) complex_rel -> complex_math rel_sign ID .
+
+    $end            reduce using rule 51 (complex_rel -> complex_math rel_sign ID .)
+    CLOSE_BR        reduce using rule 51 (complex_rel -> complex_math rel_sign ID .)
+
+
+state 107
+
+    (55) complex_rel -> complex_math rel_sign NUMBER .
+
+    $end            reduce using rule 55 (complex_rel -> complex_math rel_sign NUMBER .)
+    CLOSE_BR        reduce using rule 55 (complex_rel -> complex_math rel_sign NUMBER .)
+
+
+state 108
+
+    (88) simple_math -> NUMBER math_sign NUMBER .
+
+    MORE_OR_EQUAL   reduce using rule 88 (simple_math -> NUMBER math_sign NUMBER .)
+    LESS_OR_EQUAL   reduce using rule 88 (simple_math -> NUMBER math_sign NUMBER .)
+    NOT_EQUAL       reduce using rule 88 (simple_math -> NUMBER math_sign NUMBER .)
+    MORE            reduce using rule 88 (simple_math -> NUMBER math_sign NUMBER .)
+    LESS            reduce using rule 88 (simple_math -> NUMBER math_sign NUMBER .)
+    EQUALS          reduce using rule 88 (simple_math -> NUMBER math_sign NUMBER .)
+    $end            reduce using rule 88 (simple_math -> NUMBER math_sign NUMBER .)
+    CLOSE_BR        reduce using rule 88 (simple_math -> NUMBER math_sign NUMBER .)
+    SEMICOLON       reduce using rule 88 (simple_math -> NUMBER math_sign NUMBER .)
+    ELSE            reduce using rule 88 (simple_math -> NUMBER math_sign NUMBER .)
+    END             reduce using rule 88 (simple_math -> NUMBER math_sign NUMBER .)
+
+
+state 109
+
+    (87) simple_math -> NUMBER math_sign ID .
+
+    MORE_OR_EQUAL   reduce using rule 87 (simple_math -> NUMBER math_sign ID .)
+    LESS_OR_EQUAL   reduce using rule 87 (simple_math -> NUMBER math_sign ID .)
+    NOT_EQUAL       reduce using rule 87 (simple_math -> NUMBER math_sign ID .)
+    MORE            reduce using rule 87 (simple_math -> NUMBER math_sign ID .)
+    LESS            reduce using rule 87 (simple_math -> NUMBER math_sign ID .)
+    EQUALS          reduce using rule 87 (simple_math -> NUMBER math_sign ID .)
+    $end            reduce using rule 87 (simple_math -> NUMBER math_sign ID .)
+    CLOSE_BR        reduce using rule 87 (simple_math -> NUMBER math_sign ID .)
+    SEMICOLON       reduce using rule 87 (simple_math -> NUMBER math_sign ID .)
+    ELSE            reduce using rule 87 (simple_math -> NUMBER math_sign ID .)
+    END             reduce using rule 87 (simple_math -> NUMBER math_sign ID .)
+
+
+state 110
+
+    (75) complex_math -> NUMBER math_sign OPEN_BR . simple_math CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+
+    ID              shift and go to state 129
+    NUMBER          shift and go to state 131
+
+    simple_math                    shift and go to state 150
+
+state 111
+
+    (56) complex_rel -> NUMBER rel_sign simple_math .
+
+    $end            reduce using rule 56 (complex_rel -> NUMBER rel_sign simple_math .)
+    CLOSE_BR        reduce using rule 56 (complex_rel -> NUMBER rel_sign simple_math .)
+
+
+state 112
+
+    (57) complex_rel -> NUMBER rel_sign complex_math .
+
+    $end            reduce using rule 57 (complex_rel -> NUMBER rel_sign complex_math .)
+    CLOSE_BR        reduce using rule 57 (complex_rel -> NUMBER rel_sign complex_math .)
+
+
+state 113
+
+    (64) complex_rel -> NUMBER rel_sign OPEN_BR . simple_math CLOSE_BR
+    (65) complex_rel -> NUMBER rel_sign OPEN_BR . complex_math CLOSE_BR
+    (72) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign NUMBER
+    (76) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    ID              shift and go to state 102
+    NUMBER          shift and go to state 51
+    OPEN_BR         shift and go to state 103
+
+    simple_math                    shift and go to state 151
+    complex_math                   shift and go to state 152
+
+state 114
+
+    (37) standart_while -> WHILE OPEN_BR logic_expression . CLOSE_BR DO compound_statement
+    (38) standart_while -> WHILE OPEN_BR logic_expression . CLOSE_BR DO simple_statement
+
+    CLOSE_BR        shift and go to state 153
+
+
+state 115
+
+    (39) standart_while -> WHILE OPEN_BR relational_expression . CLOSE_BR DO compound_statement
+    (40) standart_while -> WHILE OPEN_BR relational_expression . CLOSE_BR DO simple_statement
+
+    CLOSE_BR        shift and go to state 154
+
+
+state 116
+
+    (41) standart_for -> FOR ID EQUALITY . NUMBER TO NUMBER DO compound_statement
+    (42) standart_for -> FOR ID EQUALITY . NUMBER DOWNTO NUMBER DO compound_statement
+
+    NUMBER          shift and go to state 155
+
+
+state 117
+
+    (6) declarations -> VAR identifier_list COLON type . SEMICOLON
+    (7) declarations -> VAR identifier_list COLON type . SEMICOLON complex_declar
+
+    SEMICOLON       shift and go to state 156
+
+
+state 118
+
+    (25) type -> standart_type .
+
+    SEMICOLON       reduce using rule 25 (type -> standart_type .)
+    CLOSE_BR        reduce using rule 25 (type -> standart_type .)
+
+
+state 119
+
+    (26) type -> ARRAY . OPEN_SQUARE_BR NUMBER POINT POINT NUMBER CLOSE_SQUARE_BR OF standart_type
+
+    OPEN_SQUARE_BR  shift and go to state 157
+
+
+state 120
+
+    (27) type -> standart_string .
+
+    SEMICOLON       reduce using rule 27 (type -> standart_string .)
+    CLOSE_BR        reduce using rule 27 (type -> standart_string .)
+
+
+state 121
+
+    (32) standart_type -> INTEGER .
+
+    SEMICOLON       reduce using rule 32 (standart_type -> INTEGER .)
+    CLOSE_BR        reduce using rule 32 (standart_type -> INTEGER .)
+
+
+state 122
+
+    (33) standart_type -> CHAR .
+
+    SEMICOLON       reduce using rule 33 (standart_type -> CHAR .)
+    CLOSE_BR        reduce using rule 33 (standart_type -> CHAR .)
+
+
+state 123
+
+    (34) standart_type -> BOOLEAN .
+
+    SEMICOLON       reduce using rule 34 (standart_type -> BOOLEAN .)
+    CLOSE_BR        reduce using rule 34 (standart_type -> BOOLEAN .)
+
+
+state 124
+
+    (35) standart_string -> STRING .
+    (36) standart_string -> STRING . OPEN_SQUARE_BR NUMBER CLOSE_SQUARE_BR
+
+    SEMICOLON       reduce using rule 35 (standart_string -> STRING .)
+    CLOSE_BR        reduce using rule 35 (standart_string -> STRING .)
+    OPEN_SQUARE_BR  shift and go to state 158
+
+
+state 125
+
+    (29) identifier_list -> identifier_list COMMA ID .
+
+    COLON           reduce using rule 29 (identifier_list -> identifier_list COMMA ID .)
+    COMMA           reduce using rule 29 (identifier_list -> identifier_list COMMA ID .)
+
+
+state 126
+
+    (8) standart_subprogram -> FUNCTION ID OPEN_BR parameter_list . CLOSE_BR COLON standart_type SEMICOLON
+    (24) parameter_list -> parameter_list . SEMICOLON identifier_list COLON type
+
+    CLOSE_BR        shift and go to state 159
+    SEMICOLON       shift and go to state 160
+
+
+state 127
+
+    (23) parameter_list -> identifier_list . COLON type
+    (29) identifier_list -> identifier_list . COMMA ID
+
+    COLON           shift and go to state 161
+    COMMA           shift and go to state 65
+
+
+state 128
+
+    (44) assignment_expression -> ID EQUALITY QUOTE ID . QUOTE
+
+    QUOTE           shift and go to state 162
+
+
+state 129
+
+    (85) simple_math -> ID . math_sign ID
+    (86) simple_math -> ID . math_sign NUMBER
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    math_sign                      shift and go to state 163
+
+state 130
+
+    (74) complex_math -> ID math_sign OPEN_BR simple_math . CLOSE_BR
+
+    CLOSE_BR        shift and go to state 164
+
+
+state 131
+
+    (87) simple_math -> NUMBER . math_sign ID
+    (88) simple_math -> NUMBER . math_sign NUMBER
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    math_sign                      shift and go to state 165
+
+state 132
+
+    (99) simple_rel -> ID rel_sign QUOTE ID . QUOTE
+
+    QUOTE           shift and go to state 166
+
+
+state 133
+
+    (60) complex_rel -> ID rel_sign OPEN_BR simple_math . CLOSE_BR
+    (72) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign ID
+    (73) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign NUMBER
+    (76) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    CLOSE_BR        shift and go to state 167
+
+
+state 134
+
+    (61) complex_rel -> ID rel_sign OPEN_BR complex_math . CLOSE_BR
+    (78) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign ID
+    (79) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    CLOSE_BR        shift and go to state 168
+
+
+state 135
+
+    (72) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign ID
+    (73) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign NUMBER
+    (76) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign OPEN_BR complex_math CLOSE_BR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    math_sign                      shift and go to state 137
+
+state 136
+
+    (78) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign ID
+    (79) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign OPEN_BR complex_math CLOSE_BR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    math_sign                      shift and go to state 139
+
+state 137
+
+    (72) complex_math -> OPEN_BR simple_math CLOSE_BR math_sign . ID
+    (73) complex_math -> OPEN_BR simple_math CLOSE_BR math_sign . NUMBER
+    (76) complex_math -> OPEN_BR simple_math CLOSE_BR math_sign . OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR simple_math CLOSE_BR math_sign . OPEN_BR complex_math CLOSE_BR
+
+    ID              shift and go to state 170
+    NUMBER          shift and go to state 171
+    OPEN_BR         shift and go to state 169
+
+
+state 138
+
+    (58) complex_rel -> OPEN_BR simple_math CLOSE_BR rel_sign . ID
+    (62) complex_rel -> OPEN_BR simple_math CLOSE_BR rel_sign . NUMBER
+
+    ID              shift and go to state 172
+    NUMBER          shift and go to state 173
+
+
+state 139
+
+    (78) complex_math -> OPEN_BR complex_math CLOSE_BR math_sign . ID
+    (79) complex_math -> OPEN_BR complex_math CLOSE_BR math_sign . OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR complex_math CLOSE_BR math_sign . OPEN_BR complex_math CLOSE_BR
+
+    ID              shift and go to state 175
+    OPEN_BR         shift and go to state 174
+
+
+state 140
+
+    (59) complex_rel -> OPEN_BR complex_math CLOSE_BR rel_sign . ID
+    (63) complex_rel -> OPEN_BR complex_math CLOSE_BR rel_sign . NUMBER
+
+    ID              shift and go to state 176
+    NUMBER          shift and go to state 177
+
+
+state 141
+
+    (81) complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign . ID
+    (82) complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign . OPEN_BR simple_logic CLOSE_BR
+
+    ID              shift and go to state 179
+    OPEN_BR         shift and go to state 178
+
+
+state 142
+
+    (83) complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign . ID
+    (84) complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign . OPEN_BR simple_logic CLOSE_BR
+
+    ID              shift and go to state 181
+    OPEN_BR         shift and go to state 180
+
+
+state 143
+
+    (67) complex_rel -> OPEN_BR math_expression CLOSE_BR rel_sign . OPEN_BR math_expression CLOSE_BR
+
+    OPEN_BR         shift and go to state 182
+
+
+state 144
+
+    (81) complex_logic -> OPEN_BR . simple_logic CLOSE_BR log_sign ID
+    (82) complex_logic -> OPEN_BR . simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (83) complex_logic -> OPEN_BR . complex_logic CLOSE_BR log_sign ID
+    (84) complex_logic -> OPEN_BR . complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (72) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign NUMBER
+    (76) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR . simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR . complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (96) simple_logic -> . ID log_sign ID
+    (81) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign ID
+    (82) complex_logic -> . OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (83) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign ID
+    (84) complex_logic -> . OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    ID              shift and go to state 145
+    OPEN_BR         shift and go to state 144
+    NUMBER          shift and go to state 51
+
+    simple_logic                   shift and go to state 53
+    complex_logic                  shift and go to state 54
+    simple_math                    shift and go to state 86
+    complex_math                   shift and go to state 87
+
+state 145
+
+    (96) simple_logic -> ID . log_sign ID
+    (85) simple_math -> ID . math_sign ID
+    (86) simple_math -> ID . math_sign NUMBER
+    (74) complex_math -> ID . math_sign OPEN_BR simple_math CLOSE_BR
+    (100) log_sign -> . AND
+    (101) log_sign -> . OR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    AND             shift and go to state 40
+    OR              shift and go to state 41
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    log_sign                       shift and go to state 32
+    math_sign                      shift and go to state 31
+
+state 146
+
+    (58) complex_rel -> OPEN_BR simple_math . CLOSE_BR rel_sign ID
+    (62) complex_rel -> OPEN_BR simple_math . CLOSE_BR rel_sign NUMBER
+    (72) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign ID
+    (73) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign NUMBER
+    (76) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (68) math_expression -> simple_math .
+
+  ! shift/reduce conflict for CLOSE_BR resolved as shift
+    CLOSE_BR        shift and go to state 183
+
+  ! CLOSE_BR        [ reduce using rule 68 (math_expression -> simple_math .) ]
+
+
+state 147
+
+    (59) complex_rel -> OPEN_BR complex_math . CLOSE_BR rel_sign ID
+    (63) complex_rel -> OPEN_BR complex_math . CLOSE_BR rel_sign NUMBER
+    (78) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign ID
+    (79) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (69) math_expression -> complex_math .
+
+  ! shift/reduce conflict for CLOSE_BR resolved as shift
+    CLOSE_BR        shift and go to state 184
+
+  ! CLOSE_BR        [ reduce using rule 69 (math_expression -> complex_math .) ]
+
+
+state 148
+
+    (9) if_statement -> IF OPEN_BR logic_expression CLOSE_BR . EQUALS boolean_value then_else_statement
+
+    EQUALS          shift and go to state 185
+
+
+state 149
+
+    (10) if_statement -> IF OPEN_BR relational_expression CLOSE_BR . then_else_statement
+    (11) then_else_statement -> . THEN compound_statement
+    (12) then_else_statement -> . THEN simple_statement
+    (13) then_else_statement -> . THEN compound_statement ELSE compound_statement
+    (14) then_else_statement -> . THEN simple_statement ELSE compound_statement
+    (15) then_else_statement -> . THEN compound_statement ELSE simple_statement
+    (16) then_else_statement -> . THEN simple_statement ELSE simple_statement
+
+    THEN            shift and go to state 187
+
+    then_else_statement            shift and go to state 186
+
+state 150
+
+    (75) complex_math -> NUMBER math_sign OPEN_BR simple_math . CLOSE_BR
+
+    CLOSE_BR        shift and go to state 188
+
+
+state 151
+
+    (64) complex_rel -> NUMBER rel_sign OPEN_BR simple_math . CLOSE_BR
+    (72) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign ID
+    (73) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign NUMBER
+    (76) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR simple_math . CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    CLOSE_BR        shift and go to state 189
+
+
+state 152
+
+    (65) complex_rel -> NUMBER rel_sign OPEN_BR complex_math . CLOSE_BR
+    (78) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign ID
+    (79) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR complex_math . CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    CLOSE_BR        shift and go to state 190
+
+
+state 153
+
+    (37) standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR . DO compound_statement
+    (38) standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR . DO simple_statement
+
+    DO              shift and go to state 191
+
+
+state 154
+
+    (39) standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR . DO compound_statement
+    (40) standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR . DO simple_statement
+
+    DO              shift and go to state 192
+
+
+state 155
+
+    (41) standart_for -> FOR ID EQUALITY NUMBER . TO NUMBER DO compound_statement
+    (42) standart_for -> FOR ID EQUALITY NUMBER . DOWNTO NUMBER DO compound_statement
+
+    TO              shift and go to state 193
+    DOWNTO          shift and go to state 194
+
+
+state 156
+
+    (6) declarations -> VAR identifier_list COLON type SEMICOLON .
+    (7) declarations -> VAR identifier_list COLON type SEMICOLON . complex_declar
+    (30) complex_declar -> . identifier_list COLON type SEMICOLON
+    (31) complex_declar -> . complex_declar identifier_list COLON type SEMICOLON
+    (28) identifier_list -> . ID
+    (29) identifier_list -> . identifier_list COMMA ID
+
+    $end            reduce using rule 6 (declarations -> VAR identifier_list COLON type SEMICOLON .)
+    ID              shift and go to state 28
+
+    identifier_list                shift and go to state 195
+    complex_declar                 shift and go to state 196
+
+state 157
+
+    (26) type -> ARRAY OPEN_SQUARE_BR . NUMBER POINT POINT NUMBER CLOSE_SQUARE_BR OF standart_type
+
+    NUMBER          shift and go to state 197
+
+
+state 158
+
+    (36) standart_string -> STRING OPEN_SQUARE_BR . NUMBER CLOSE_SQUARE_BR
+
+    NUMBER          shift and go to state 198
+
+
+state 159
+
+    (8) standart_subprogram -> FUNCTION ID OPEN_BR parameter_list CLOSE_BR . COLON standart_type SEMICOLON
+
+    COLON           shift and go to state 199
+
+
+state 160
+
+    (24) parameter_list -> parameter_list SEMICOLON . identifier_list COLON type
+    (28) identifier_list -> . ID
+    (29) identifier_list -> . identifier_list COMMA ID
+
+    ID              shift and go to state 28
+
+    identifier_list                shift and go to state 200
+
+state 161
+
+    (23) parameter_list -> identifier_list COLON . type
+    (25) type -> . standart_type
+    (26) type -> . ARRAY OPEN_SQUARE_BR NUMBER POINT POINT NUMBER CLOSE_SQUARE_BR OF standart_type
+    (27) type -> . standart_string
+    (32) standart_type -> . INTEGER
+    (33) standart_type -> . CHAR
+    (34) standart_type -> . BOOLEAN
+    (35) standart_string -> . STRING
+    (36) standart_string -> . STRING OPEN_SQUARE_BR NUMBER CLOSE_SQUARE_BR
+
+    ARRAY           shift and go to state 119
+    INTEGER         shift and go to state 121
+    CHAR            shift and go to state 122
+    BOOLEAN         shift and go to state 123
+    STRING          shift and go to state 124
+
+    type                           shift and go to state 201
+    standart_type                  shift and go to state 118
+    standart_string                shift and go to state 120
+
+state 162
+
+    (44) assignment_expression -> ID EQUALITY QUOTE ID QUOTE .
+
+    $end            reduce using rule 44 (assignment_expression -> ID EQUALITY QUOTE ID QUOTE .)
+    SEMICOLON       reduce using rule 44 (assignment_expression -> ID EQUALITY QUOTE ID QUOTE .)
+    ELSE            reduce using rule 44 (assignment_expression -> ID EQUALITY QUOTE ID QUOTE .)
+    END             reduce using rule 44 (assignment_expression -> ID EQUALITY QUOTE ID QUOTE .)
+
+
+state 163
+
+    (85) simple_math -> ID math_sign . ID
+    (86) simple_math -> ID math_sign . NUMBER
+
+    ID              shift and go to state 76
+    NUMBER          shift and go to state 77
+
+
+state 164
+
+    (74) complex_math -> ID math_sign OPEN_BR simple_math CLOSE_BR .
+
+    MORE_OR_EQUAL   reduce using rule 74 (complex_math -> ID math_sign OPEN_BR simple_math CLOSE_BR .)
+    LESS_OR_EQUAL   reduce using rule 74 (complex_math -> ID math_sign OPEN_BR simple_math CLOSE_BR .)
+    NOT_EQUAL       reduce using rule 74 (complex_math -> ID math_sign OPEN_BR simple_math CLOSE_BR .)
+    MORE            reduce using rule 74 (complex_math -> ID math_sign OPEN_BR simple_math CLOSE_BR .)
+    LESS            reduce using rule 74 (complex_math -> ID math_sign OPEN_BR simple_math CLOSE_BR .)
+    EQUALS          reduce using rule 74 (complex_math -> ID math_sign OPEN_BR simple_math CLOSE_BR .)
+    $end            reduce using rule 74 (complex_math -> ID math_sign OPEN_BR simple_math CLOSE_BR .)
+    CLOSE_BR        reduce using rule 74 (complex_math -> ID math_sign OPEN_BR simple_math CLOSE_BR .)
+    SEMICOLON       reduce using rule 74 (complex_math -> ID math_sign OPEN_BR simple_math CLOSE_BR .)
+    ELSE            reduce using rule 74 (complex_math -> ID math_sign OPEN_BR simple_math CLOSE_BR .)
+    END             reduce using rule 74 (complex_math -> ID math_sign OPEN_BR simple_math CLOSE_BR .)
+
+
+state 165
+
+    (87) simple_math -> NUMBER math_sign . ID
+    (88) simple_math -> NUMBER math_sign . NUMBER
+
+    ID              shift and go to state 109
+    NUMBER          shift and go to state 108
+
+
+state 166
+
+    (99) simple_rel -> ID rel_sign QUOTE ID QUOTE .
+
+    $end            reduce using rule 99 (simple_rel -> ID rel_sign QUOTE ID QUOTE .)
+    CLOSE_BR        reduce using rule 99 (simple_rel -> ID rel_sign QUOTE ID QUOTE .)
+
+
+state 167
+
+    (60) complex_rel -> ID rel_sign OPEN_BR simple_math CLOSE_BR .
+    (72) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign ID
+    (73) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign NUMBER
+    (76) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign OPEN_BR complex_math CLOSE_BR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    $end            reduce using rule 60 (complex_rel -> ID rel_sign OPEN_BR simple_math CLOSE_BR .)
+    CLOSE_BR        reduce using rule 60 (complex_rel -> ID rel_sign OPEN_BR simple_math CLOSE_BR .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    math_sign                      shift and go to state 137
+
+state 168
+
+    (61) complex_rel -> ID rel_sign OPEN_BR complex_math CLOSE_BR .
+    (78) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign ID
+    (79) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign OPEN_BR complex_math CLOSE_BR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    $end            reduce using rule 61 (complex_rel -> ID rel_sign OPEN_BR complex_math CLOSE_BR .)
+    CLOSE_BR        reduce using rule 61 (complex_rel -> ID rel_sign OPEN_BR complex_math CLOSE_BR .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    math_sign                      shift and go to state 139
+
+state 169
+
+    (76) complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR . simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR . complex_math CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    ID              shift and go to state 102
+    NUMBER          shift and go to state 51
+    OPEN_BR         shift and go to state 103
+
+    simple_math                    shift and go to state 202
+    complex_math                   shift and go to state 203
+
+state 170
+
+    (72) complex_math -> OPEN_BR simple_math CLOSE_BR math_sign ID .
+
+    MORE_OR_EQUAL   reduce using rule 72 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign ID .)
+    LESS_OR_EQUAL   reduce using rule 72 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign ID .)
+    NOT_EQUAL       reduce using rule 72 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign ID .)
+    MORE            reduce using rule 72 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign ID .)
+    LESS            reduce using rule 72 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign ID .)
+    EQUALS          reduce using rule 72 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign ID .)
+    $end            reduce using rule 72 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign ID .)
+    CLOSE_BR        reduce using rule 72 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign ID .)
+    SEMICOLON       reduce using rule 72 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign ID .)
+    ELSE            reduce using rule 72 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign ID .)
+    END             reduce using rule 72 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign ID .)
+
+
+state 171
+
+    (73) complex_math -> OPEN_BR simple_math CLOSE_BR math_sign NUMBER .
+
+    MORE_OR_EQUAL   reduce using rule 73 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign NUMBER .)
+    LESS_OR_EQUAL   reduce using rule 73 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign NUMBER .)
+    NOT_EQUAL       reduce using rule 73 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign NUMBER .)
+    MORE            reduce using rule 73 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign NUMBER .)
+    LESS            reduce using rule 73 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign NUMBER .)
+    EQUALS          reduce using rule 73 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign NUMBER .)
+    $end            reduce using rule 73 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign NUMBER .)
+    CLOSE_BR        reduce using rule 73 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign NUMBER .)
+    SEMICOLON       reduce using rule 73 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign NUMBER .)
+    ELSE            reduce using rule 73 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign NUMBER .)
+    END             reduce using rule 73 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign NUMBER .)
+
+
+state 172
+
+    (58) complex_rel -> OPEN_BR simple_math CLOSE_BR rel_sign ID .
+
+    $end            reduce using rule 58 (complex_rel -> OPEN_BR simple_math CLOSE_BR rel_sign ID .)
+    CLOSE_BR        reduce using rule 58 (complex_rel -> OPEN_BR simple_math CLOSE_BR rel_sign ID .)
+
+
+state 173
+
+    (62) complex_rel -> OPEN_BR simple_math CLOSE_BR rel_sign NUMBER .
+
+    $end            reduce using rule 62 (complex_rel -> OPEN_BR simple_math CLOSE_BR rel_sign NUMBER .)
+    CLOSE_BR        reduce using rule 62 (complex_rel -> OPEN_BR simple_math CLOSE_BR rel_sign NUMBER .)
+
+
+state 174
+
+    (79) complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR . simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR . complex_math CLOSE_BR
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    ID              shift and go to state 102
+    NUMBER          shift and go to state 51
+    OPEN_BR         shift and go to state 103
+
+    complex_math                   shift and go to state 204
+    simple_math                    shift and go to state 205
+
+state 175
+
+    (78) complex_math -> OPEN_BR complex_math CLOSE_BR math_sign ID .
+
+    MORE_OR_EQUAL   reduce using rule 78 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign ID .)
+    LESS_OR_EQUAL   reduce using rule 78 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign ID .)
+    NOT_EQUAL       reduce using rule 78 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign ID .)
+    MORE            reduce using rule 78 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign ID .)
+    LESS            reduce using rule 78 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign ID .)
+    EQUALS          reduce using rule 78 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign ID .)
+    $end            reduce using rule 78 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign ID .)
+    CLOSE_BR        reduce using rule 78 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign ID .)
+    SEMICOLON       reduce using rule 78 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign ID .)
+    ELSE            reduce using rule 78 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign ID .)
+    END             reduce using rule 78 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign ID .)
+
+
+state 176
+
+    (59) complex_rel -> OPEN_BR complex_math CLOSE_BR rel_sign ID .
+
+    $end            reduce using rule 59 (complex_rel -> OPEN_BR complex_math CLOSE_BR rel_sign ID .)
+    CLOSE_BR        reduce using rule 59 (complex_rel -> OPEN_BR complex_math CLOSE_BR rel_sign ID .)
+
+
+state 177
+
+    (63) complex_rel -> OPEN_BR complex_math CLOSE_BR rel_sign NUMBER .
+
+    $end            reduce using rule 63 (complex_rel -> OPEN_BR complex_math CLOSE_BR rel_sign NUMBER .)
+    CLOSE_BR        reduce using rule 63 (complex_rel -> OPEN_BR complex_math CLOSE_BR rel_sign NUMBER .)
+
+
+state 178
+
+    (82) complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR . simple_logic CLOSE_BR
+    (96) simple_logic -> . ID log_sign ID
+
+    ID              shift and go to state 207
+
+    simple_logic                   shift and go to state 206
+
+state 179
+
+    (81) complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign ID .
+
+    $end            reduce using rule 81 (complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign ID .)
+    CLOSE_BR        reduce using rule 81 (complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign ID .)
+    SEMICOLON       reduce using rule 81 (complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign ID .)
+    ELSE            reduce using rule 81 (complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign ID .)
+    END             reduce using rule 81 (complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign ID .)
+
+
+state 180
+
+    (84) complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR . simple_logic CLOSE_BR
+    (96) simple_logic -> . ID log_sign ID
+
+    ID              shift and go to state 207
+
+    simple_logic                   shift and go to state 208
+
+state 181
+
+    (83) complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign ID .
+
+    $end            reduce using rule 83 (complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign ID .)
+    CLOSE_BR        reduce using rule 83 (complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign ID .)
+    SEMICOLON       reduce using rule 83 (complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign ID .)
+    ELSE            reduce using rule 83 (complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign ID .)
+    END             reduce using rule 83 (complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign ID .)
+
+
+state 182
+
+    (67) complex_rel -> OPEN_BR math_expression CLOSE_BR rel_sign OPEN_BR . math_expression CLOSE_BR
+    (68) math_expression -> . simple_math
+    (69) math_expression -> . complex_math
+    (85) simple_math -> . ID math_sign ID
+    (86) simple_math -> . ID math_sign NUMBER
+    (87) simple_math -> . NUMBER math_sign ID
+    (88) simple_math -> . NUMBER math_sign NUMBER
+    (72) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign ID
+    (73) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign NUMBER
+    (74) complex_math -> . ID math_sign OPEN_BR simple_math CLOSE_BR
+    (75) complex_math -> . NUMBER math_sign OPEN_BR simple_math CLOSE_BR
+    (76) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> . OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+    (78) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign ID
+    (79) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> . OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR
+
+    ID              shift and go to state 102
+    NUMBER          shift and go to state 51
+    OPEN_BR         shift and go to state 103
+
+    math_expression                shift and go to state 209
+    simple_math                    shift and go to state 74
+    complex_math                   shift and go to state 75
+
+state 183
+
+    (58) complex_rel -> OPEN_BR simple_math CLOSE_BR . rel_sign ID
+    (62) complex_rel -> OPEN_BR simple_math CLOSE_BR . rel_sign NUMBER
+    (72) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign ID
+    (73) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign NUMBER
+    (76) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign OPEN_BR complex_math CLOSE_BR
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    rel_sign                       shift and go to state 138
+    math_sign                      shift and go to state 137
+
+state 184
+
+    (59) complex_rel -> OPEN_BR complex_math CLOSE_BR . rel_sign ID
+    (63) complex_rel -> OPEN_BR complex_math CLOSE_BR . rel_sign NUMBER
+    (78) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign ID
+    (79) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign OPEN_BR complex_math CLOSE_BR
+    (102) rel_sign -> . MORE_OR_EQUAL
+    (103) rel_sign -> . LESS_OR_EQUAL
+    (104) rel_sign -> . NOT_EQUAL
+    (105) rel_sign -> . MORE
+    (106) rel_sign -> . LESS
+    (107) rel_sign -> . EQUALS
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    MORE_OR_EQUAL   shift and go to state 42
+    LESS_OR_EQUAL   shift and go to state 43
+    NOT_EQUAL       shift and go to state 44
+    MORE            shift and go to state 45
+    LESS            shift and go to state 46
+    EQUALS          shift and go to state 47
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    rel_sign                       shift and go to state 140
+    math_sign                      shift and go to state 139
+
+state 185
+
+    (9) if_statement -> IF OPEN_BR logic_expression CLOSE_BR EQUALS . boolean_value then_else_statement
+    (108) boolean_value -> . TRUE
+    (109) boolean_value -> . FALSE
+
+    TRUE            shift and go to state 72
+    FALSE           shift and go to state 73
+
+    boolean_value                  shift and go to state 210
+
+state 186
+
+    (10) if_statement -> IF OPEN_BR relational_expression CLOSE_BR then_else_statement .
+
+    $end            reduce using rule 10 (if_statement -> IF OPEN_BR relational_expression CLOSE_BR then_else_statement .)
+
+
+state 187
+
+    (11) then_else_statement -> THEN . compound_statement
+    (12) then_else_statement -> THEN . simple_statement
+    (13) then_else_statement -> THEN . compound_statement ELSE compound_statement
+    (14) then_else_statement -> THEN . simple_statement ELSE compound_statement
+    (15) then_else_statement -> THEN . compound_statement ELSE simple_statement
+    (16) then_else_statement -> THEN . simple_statement ELSE simple_statement
+    (89) compound_statement -> . BEGIN simple_statement END
+    (90) simple_statement -> . statement_list
+    (91) simple_statement -> . empty
+    (92) statement_list -> . statement
+    (93) statement_list -> . statement_list SEMICOLON statement
+    (116) empty -> .
+    (94) statement -> . assignment_expression
+    (95) statement -> . standart_cycle
+    (43) assignment_expression -> . ID EQUALITY NUMBER
+    (44) assignment_expression -> . ID EQUALITY QUOTE ID QUOTE
+    (45) assignment_expression -> . ID EQUALITY boolean_value
+    (46) assignment_expression -> . ID EQUALITY math_expression
+    (47) assignment_expression -> . ID EQUALITY logic_expression
+    (21) standart_cycle -> . standart_while
+    (22) standart_cycle -> . standart_for
+    (37) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement
+    (38) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement
+    (39) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement
+    (40) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement
+    (41) standart_for -> . FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement
+    (42) standart_for -> . FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement
+
+    BEGIN           shift and go to state 213
+    ELSE            reduce using rule 116 (empty -> .)
+    $end            reduce using rule 116 (empty -> .)
+    ID              shift and go to state 219
+    WHILE           shift and go to state 25
+    FOR             shift and go to state 26
+
+    compound_statement             shift and go to state 211
+    simple_statement               shift and go to state 212
+    statement_list                 shift and go to state 214
+    empty                          shift and go to state 215
+    statement                      shift and go to state 216
+    assignment_expression          shift and go to state 217
+    standart_cycle                 shift and go to state 218
+    standart_while                 shift and go to state 16
+    standart_for                   shift and go to state 17
+
+state 188
+
+    (75) complex_math -> NUMBER math_sign OPEN_BR simple_math CLOSE_BR .
+
+    MORE_OR_EQUAL   reduce using rule 75 (complex_math -> NUMBER math_sign OPEN_BR simple_math CLOSE_BR .)
+    LESS_OR_EQUAL   reduce using rule 75 (complex_math -> NUMBER math_sign OPEN_BR simple_math CLOSE_BR .)
+    NOT_EQUAL       reduce using rule 75 (complex_math -> NUMBER math_sign OPEN_BR simple_math CLOSE_BR .)
+    MORE            reduce using rule 75 (complex_math -> NUMBER math_sign OPEN_BR simple_math CLOSE_BR .)
+    LESS            reduce using rule 75 (complex_math -> NUMBER math_sign OPEN_BR simple_math CLOSE_BR .)
+    EQUALS          reduce using rule 75 (complex_math -> NUMBER math_sign OPEN_BR simple_math CLOSE_BR .)
+    $end            reduce using rule 75 (complex_math -> NUMBER math_sign OPEN_BR simple_math CLOSE_BR .)
+    CLOSE_BR        reduce using rule 75 (complex_math -> NUMBER math_sign OPEN_BR simple_math CLOSE_BR .)
+    SEMICOLON       reduce using rule 75 (complex_math -> NUMBER math_sign OPEN_BR simple_math CLOSE_BR .)
+    ELSE            reduce using rule 75 (complex_math -> NUMBER math_sign OPEN_BR simple_math CLOSE_BR .)
+    END             reduce using rule 75 (complex_math -> NUMBER math_sign OPEN_BR simple_math CLOSE_BR .)
+
+
+state 189
+
+    (64) complex_rel -> NUMBER rel_sign OPEN_BR simple_math CLOSE_BR .
+    (72) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign ID
+    (73) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign NUMBER
+    (76) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign OPEN_BR simple_math CLOSE_BR
+    (77) complex_math -> OPEN_BR simple_math CLOSE_BR . math_sign OPEN_BR complex_math CLOSE_BR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    $end            reduce using rule 64 (complex_rel -> NUMBER rel_sign OPEN_BR simple_math CLOSE_BR .)
+    CLOSE_BR        reduce using rule 64 (complex_rel -> NUMBER rel_sign OPEN_BR simple_math CLOSE_BR .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    math_sign                      shift and go to state 137
+
+state 190
+
+    (65) complex_rel -> NUMBER rel_sign OPEN_BR complex_math CLOSE_BR .
+    (78) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign ID
+    (79) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign OPEN_BR simple_math CLOSE_BR
+    (80) complex_math -> OPEN_BR complex_math CLOSE_BR . math_sign OPEN_BR complex_math CLOSE_BR
+    (110) math_sign -> . PLUS
+    (111) math_sign -> . MINUS
+    (112) math_sign -> . DIVISION
+    (113) math_sign -> . MULTIPLICATION
+    (114) math_sign -> . DIV
+    (115) math_sign -> . MOD
+
+    $end            reduce using rule 65 (complex_rel -> NUMBER rel_sign OPEN_BR complex_math CLOSE_BR .)
+    CLOSE_BR        reduce using rule 65 (complex_rel -> NUMBER rel_sign OPEN_BR complex_math CLOSE_BR .)
+    PLUS            shift and go to state 34
+    MINUS           shift and go to state 35
+    DIVISION        shift and go to state 36
+    MULTIPLICATION  shift and go to state 37
+    DIV             shift and go to state 38
+    MOD             shift and go to state 39
+
+    math_sign                      shift and go to state 139
+
+state 191
+
+    (37) standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO . compound_statement
+    (38) standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO . simple_statement
+    (89) compound_statement -> . BEGIN simple_statement END
+    (90) simple_statement -> . statement_list
+    (91) simple_statement -> . empty
+    (92) statement_list -> . statement
+    (93) statement_list -> . statement_list SEMICOLON statement
+    (116) empty -> .
+    (94) statement -> . assignment_expression
+    (95) statement -> . standart_cycle
+    (43) assignment_expression -> . ID EQUALITY NUMBER
+    (44) assignment_expression -> . ID EQUALITY QUOTE ID QUOTE
+    (45) assignment_expression -> . ID EQUALITY boolean_value
+    (46) assignment_expression -> . ID EQUALITY math_expression
+    (47) assignment_expression -> . ID EQUALITY logic_expression
+    (21) standart_cycle -> . standart_while
+    (22) standart_cycle -> . standart_for
+    (37) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement
+    (38) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement
+    (39) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement
+    (40) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement
+    (41) standart_for -> . FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement
+    (42) standart_for -> . FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement
+
+    BEGIN           shift and go to state 213
+    SEMICOLON       reduce using rule 116 (empty -> .)
+    $end            reduce using rule 116 (empty -> .)
+    ELSE            reduce using rule 116 (empty -> .)
+    END             reduce using rule 116 (empty -> .)
+    ID              shift and go to state 219
+    WHILE           shift and go to state 25
+    FOR             shift and go to state 26
+
+    compound_statement             shift and go to state 220
+    simple_statement               shift and go to state 221
+    statement_list                 shift and go to state 214
+    empty                          shift and go to state 215
+    statement                      shift and go to state 216
+    assignment_expression          shift and go to state 217
+    standart_cycle                 shift and go to state 218
+    standart_while                 shift and go to state 16
+    standart_for                   shift and go to state 17
+
+state 192
+
+    (39) standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO . compound_statement
+    (40) standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO . simple_statement
+    (89) compound_statement -> . BEGIN simple_statement END
+    (90) simple_statement -> . statement_list
+    (91) simple_statement -> . empty
+    (92) statement_list -> . statement
+    (93) statement_list -> . statement_list SEMICOLON statement
+    (116) empty -> .
+    (94) statement -> . assignment_expression
+    (95) statement -> . standart_cycle
+    (43) assignment_expression -> . ID EQUALITY NUMBER
+    (44) assignment_expression -> . ID EQUALITY QUOTE ID QUOTE
+    (45) assignment_expression -> . ID EQUALITY boolean_value
+    (46) assignment_expression -> . ID EQUALITY math_expression
+    (47) assignment_expression -> . ID EQUALITY logic_expression
+    (21) standart_cycle -> . standart_while
+    (22) standart_cycle -> . standart_for
+    (37) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement
+    (38) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement
+    (39) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement
+    (40) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement
+    (41) standart_for -> . FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement
+    (42) standart_for -> . FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement
+
+    BEGIN           shift and go to state 213
+    SEMICOLON       reduce using rule 116 (empty -> .)
+    $end            reduce using rule 116 (empty -> .)
+    ELSE            reduce using rule 116 (empty -> .)
+    END             reduce using rule 116 (empty -> .)
+    ID              shift and go to state 219
+    WHILE           shift and go to state 25
+    FOR             shift and go to state 26
+
+    compound_statement             shift and go to state 222
+    simple_statement               shift and go to state 223
+    statement_list                 shift and go to state 214
+    empty                          shift and go to state 215
+    statement                      shift and go to state 216
+    assignment_expression          shift and go to state 217
+    standart_cycle                 shift and go to state 218
+    standart_while                 shift and go to state 16
+    standart_for                   shift and go to state 17
+
+state 193
+
+    (41) standart_for -> FOR ID EQUALITY NUMBER TO . NUMBER DO compound_statement
+
+    NUMBER          shift and go to state 224
+
+
+state 194
+
+    (42) standart_for -> FOR ID EQUALITY NUMBER DOWNTO . NUMBER DO compound_statement
+
+    NUMBER          shift and go to state 225
+
+
+state 195
+
+    (30) complex_declar -> identifier_list . COLON type SEMICOLON
+    (29) identifier_list -> identifier_list . COMMA ID
+
+    COLON           shift and go to state 226
+    COMMA           shift and go to state 65
+
+
+state 196
+
+    (7) declarations -> VAR identifier_list COLON type SEMICOLON complex_declar .
+    (31) complex_declar -> complex_declar . identifier_list COLON type SEMICOLON
+    (28) identifier_list -> . ID
+    (29) identifier_list -> . identifier_list COMMA ID
+
+    $end            reduce using rule 7 (declarations -> VAR identifier_list COLON type SEMICOLON complex_declar .)
+    ID              shift and go to state 28
+
+    identifier_list                shift and go to state 227
+
+state 197
+
+    (26) type -> ARRAY OPEN_SQUARE_BR NUMBER . POINT POINT NUMBER CLOSE_SQUARE_BR OF standart_type
+
+    POINT           shift and go to state 228
+
+
+state 198
+
+    (36) standart_string -> STRING OPEN_SQUARE_BR NUMBER . CLOSE_SQUARE_BR
+
+    CLOSE_SQUARE_BR shift and go to state 229
+
+
+state 199
+
+    (8) standart_subprogram -> FUNCTION ID OPEN_BR parameter_list CLOSE_BR COLON . standart_type SEMICOLON
+    (32) standart_type -> . INTEGER
+    (33) standart_type -> . CHAR
+    (34) standart_type -> . BOOLEAN
+
+    INTEGER         shift and go to state 121
+    CHAR            shift and go to state 122
+    BOOLEAN         shift and go to state 123
+
+    standart_type                  shift and go to state 230
+
+state 200
+
+    (24) parameter_list -> parameter_list SEMICOLON identifier_list . COLON type
+    (29) identifier_list -> identifier_list . COMMA ID
+
+    COLON           shift and go to state 231
+    COMMA           shift and go to state 65
+
+
+state 201
+
+    (23) parameter_list -> identifier_list COLON type .
+
+    CLOSE_BR        reduce using rule 23 (parameter_list -> identifier_list COLON type .)
+    SEMICOLON       reduce using rule 23 (parameter_list -> identifier_list COLON type .)
+
+
+state 202
+
+    (76) complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math . CLOSE_BR
+
+    CLOSE_BR        shift and go to state 232
+
+
+state 203
+
+    (77) complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math . CLOSE_BR
+
+    CLOSE_BR        shift and go to state 233
+
+
+state 204
+
+    (80) complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math . CLOSE_BR
+
+    CLOSE_BR        shift and go to state 234
+
+
+state 205
+
+    (79) complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math . CLOSE_BR
+
+    CLOSE_BR        shift and go to state 235
+
+
+state 206
+
+    (82) complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic . CLOSE_BR
+
+    CLOSE_BR        shift and go to state 236
+
+
+state 207
+
+    (96) simple_logic -> ID . log_sign ID
+    (100) log_sign -> . AND
+    (101) log_sign -> . OR
+
+    AND             shift and go to state 40
+    OR              shift and go to state 41
+
+    log_sign                       shift and go to state 32
+
+state 208
+
+    (84) complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic . CLOSE_BR
+
+    CLOSE_BR        shift and go to state 237
+
+
+state 209
+
+    (67) complex_rel -> OPEN_BR math_expression CLOSE_BR rel_sign OPEN_BR math_expression . CLOSE_BR
+
+    CLOSE_BR        shift and go to state 238
+
+
+state 210
+
+    (9) if_statement -> IF OPEN_BR logic_expression CLOSE_BR EQUALS boolean_value . then_else_statement
+    (11) then_else_statement -> . THEN compound_statement
+    (12) then_else_statement -> . THEN simple_statement
+    (13) then_else_statement -> . THEN compound_statement ELSE compound_statement
+    (14) then_else_statement -> . THEN simple_statement ELSE compound_statement
+    (15) then_else_statement -> . THEN compound_statement ELSE simple_statement
+    (16) then_else_statement -> . THEN simple_statement ELSE simple_statement
+
+    THEN            shift and go to state 187
+
+    then_else_statement            shift and go to state 239
+
+state 211
+
+    (11) then_else_statement -> THEN compound_statement .
+    (13) then_else_statement -> THEN compound_statement . ELSE compound_statement
+    (15) then_else_statement -> THEN compound_statement . ELSE simple_statement
+
+    $end            reduce using rule 11 (then_else_statement -> THEN compound_statement .)
+    ELSE            shift and go to state 240
+
+
+state 212
+
+    (12) then_else_statement -> THEN simple_statement .
+    (14) then_else_statement -> THEN simple_statement . ELSE compound_statement
+    (16) then_else_statement -> THEN simple_statement . ELSE simple_statement
+
+    $end            reduce using rule 12 (then_else_statement -> THEN simple_statement .)
+    ELSE            shift and go to state 241
+
+
+state 213
+
+    (89) compound_statement -> BEGIN . simple_statement END
+    (90) simple_statement -> . statement_list
+    (91) simple_statement -> . empty
+    (92) statement_list -> . statement
+    (93) statement_list -> . statement_list SEMICOLON statement
+    (116) empty -> .
+    (94) statement -> . assignment_expression
+    (95) statement -> . standart_cycle
+    (43) assignment_expression -> . ID EQUALITY NUMBER
+    (44) assignment_expression -> . ID EQUALITY QUOTE ID QUOTE
+    (45) assignment_expression -> . ID EQUALITY boolean_value
+    (46) assignment_expression -> . ID EQUALITY math_expression
+    (47) assignment_expression -> . ID EQUALITY logic_expression
+    (21) standart_cycle -> . standart_while
+    (22) standart_cycle -> . standart_for
+    (37) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement
+    (38) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement
+    (39) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement
+    (40) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement
+    (41) standart_for -> . FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement
+    (42) standart_for -> . FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement
+
+    END             reduce using rule 116 (empty -> .)
+    ID              shift and go to state 219
+    WHILE           shift and go to state 25
+    FOR             shift and go to state 26
+
+    simple_statement               shift and go to state 242
+    statement_list                 shift and go to state 214
+    empty                          shift and go to state 215
+    statement                      shift and go to state 216
+    assignment_expression          shift and go to state 217
+    standart_cycle                 shift and go to state 218
+    standart_while                 shift and go to state 16
+    standart_for                   shift and go to state 17
+
+state 214
+
+    (90) simple_statement -> statement_list .
+    (93) statement_list -> statement_list . SEMICOLON statement
+
+  ! shift/reduce conflict for SEMICOLON resolved as shift
+    ELSE            reduce using rule 90 (simple_statement -> statement_list .)
+    $end            reduce using rule 90 (simple_statement -> statement_list .)
+    END             reduce using rule 90 (simple_statement -> statement_list .)
+    SEMICOLON       shift and go to state 243
+
+  ! SEMICOLON       [ reduce using rule 90 (simple_statement -> statement_list .) ]
+
+
+state 215
+
+    (91) simple_statement -> empty .
+
+    ELSE            reduce using rule 91 (simple_statement -> empty .)
+    $end            reduce using rule 91 (simple_statement -> empty .)
+    SEMICOLON       reduce using rule 91 (simple_statement -> empty .)
+    END             reduce using rule 91 (simple_statement -> empty .)
+
+
+state 216
+
+    (92) statement_list -> statement .
+
+    SEMICOLON       reduce using rule 92 (statement_list -> statement .)
+    ELSE            reduce using rule 92 (statement_list -> statement .)
+    $end            reduce using rule 92 (statement_list -> statement .)
+    END             reduce using rule 92 (statement_list -> statement .)
+
+
+state 217
+
+    (94) statement -> assignment_expression .
+
+    SEMICOLON       reduce using rule 94 (statement -> assignment_expression .)
+    ELSE            reduce using rule 94 (statement -> assignment_expression .)
+    $end            reduce using rule 94 (statement -> assignment_expression .)
+    END             reduce using rule 94 (statement -> assignment_expression .)
+
+
+state 218
+
+    (95) statement -> standart_cycle .
+
+    SEMICOLON       reduce using rule 95 (statement -> standart_cycle .)
+    ELSE            reduce using rule 95 (statement -> standart_cycle .)
+    $end            reduce using rule 95 (statement -> standart_cycle .)
+    END             reduce using rule 95 (statement -> standart_cycle .)
+
+
+state 219
+
+    (43) assignment_expression -> ID . EQUALITY NUMBER
+    (44) assignment_expression -> ID . EQUALITY QUOTE ID QUOTE
+    (45) assignment_expression -> ID . EQUALITY boolean_value
+    (46) assignment_expression -> ID . EQUALITY math_expression
+    (47) assignment_expression -> ID . EQUALITY logic_expression
+
+    EQUALITY        shift and go to state 30
+
+
+state 220
+
+    (37) standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement .
+
+    $end            reduce using rule 37 (standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement .)
+    SEMICOLON       reduce using rule 37 (standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement .)
+    ELSE            reduce using rule 37 (standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement .)
+    END             reduce using rule 37 (standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement .)
+
+
+state 221
+
+    (38) standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement .
+
+    $end            reduce using rule 38 (standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement .)
+    SEMICOLON       reduce using rule 38 (standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement .)
+    ELSE            reduce using rule 38 (standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement .)
+    END             reduce using rule 38 (standart_while -> WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement .)
+
+
+state 222
+
+    (39) standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement .
+
+    $end            reduce using rule 39 (standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement .)
+    SEMICOLON       reduce using rule 39 (standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement .)
+    ELSE            reduce using rule 39 (standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement .)
+    END             reduce using rule 39 (standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement .)
+
+
+state 223
+
+    (40) standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement .
+
+    $end            reduce using rule 40 (standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement .)
+    SEMICOLON       reduce using rule 40 (standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement .)
+    ELSE            reduce using rule 40 (standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement .)
+    END             reduce using rule 40 (standart_while -> WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement .)
+
+
+state 224
+
+    (41) standart_for -> FOR ID EQUALITY NUMBER TO NUMBER . DO compound_statement
+
+    DO              shift and go to state 244
+
+
+state 225
+
+    (42) standart_for -> FOR ID EQUALITY NUMBER DOWNTO NUMBER . DO compound_statement
+
+    DO              shift and go to state 245
+
+
+state 226
+
+    (30) complex_declar -> identifier_list COLON . type SEMICOLON
+    (25) type -> . standart_type
+    (26) type -> . ARRAY OPEN_SQUARE_BR NUMBER POINT POINT NUMBER CLOSE_SQUARE_BR OF standart_type
+    (27) type -> . standart_string
+    (32) standart_type -> . INTEGER
+    (33) standart_type -> . CHAR
+    (34) standart_type -> . BOOLEAN
+    (35) standart_string -> . STRING
+    (36) standart_string -> . STRING OPEN_SQUARE_BR NUMBER CLOSE_SQUARE_BR
+
+    ARRAY           shift and go to state 119
+    INTEGER         shift and go to state 121
+    CHAR            shift and go to state 122
+    BOOLEAN         shift and go to state 123
+    STRING          shift and go to state 124
+
+    type                           shift and go to state 246
+    standart_type                  shift and go to state 118
+    standart_string                shift and go to state 120
+
+state 227
+
+    (31) complex_declar -> complex_declar identifier_list . COLON type SEMICOLON
+    (29) identifier_list -> identifier_list . COMMA ID
+
+    COLON           shift and go to state 247
+    COMMA           shift and go to state 65
+
+
+state 228
+
+    (26) type -> ARRAY OPEN_SQUARE_BR NUMBER POINT . POINT NUMBER CLOSE_SQUARE_BR OF standart_type
+
+    POINT           shift and go to state 248
+
+
+state 229
+
+    (36) standart_string -> STRING OPEN_SQUARE_BR NUMBER CLOSE_SQUARE_BR .
+
+    SEMICOLON       reduce using rule 36 (standart_string -> STRING OPEN_SQUARE_BR NUMBER CLOSE_SQUARE_BR .)
+    CLOSE_BR        reduce using rule 36 (standart_string -> STRING OPEN_SQUARE_BR NUMBER CLOSE_SQUARE_BR .)
+
+
+state 230
+
+    (8) standart_subprogram -> FUNCTION ID OPEN_BR parameter_list CLOSE_BR COLON standart_type . SEMICOLON
+
+    SEMICOLON       shift and go to state 249
+
+
+state 231
+
+    (24) parameter_list -> parameter_list SEMICOLON identifier_list COLON . type
+    (25) type -> . standart_type
+    (26) type -> . ARRAY OPEN_SQUARE_BR NUMBER POINT POINT NUMBER CLOSE_SQUARE_BR OF standart_type
+    (27) type -> . standart_string
+    (32) standart_type -> . INTEGER
+    (33) standart_type -> . CHAR
+    (34) standart_type -> . BOOLEAN
+    (35) standart_string -> . STRING
+    (36) standart_string -> . STRING OPEN_SQUARE_BR NUMBER CLOSE_SQUARE_BR
+
+    ARRAY           shift and go to state 119
+    INTEGER         shift and go to state 121
+    CHAR            shift and go to state 122
+    BOOLEAN         shift and go to state 123
+    STRING          shift and go to state 124
+
+    type                           shift and go to state 250
+    standart_type                  shift and go to state 118
+    standart_string                shift and go to state 120
+
+state 232
+
+    (76) complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .
+
+    MORE_OR_EQUAL   reduce using rule 76 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    LESS_OR_EQUAL   reduce using rule 76 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    NOT_EQUAL       reduce using rule 76 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    MORE            reduce using rule 76 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    LESS            reduce using rule 76 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    EQUALS          reduce using rule 76 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    $end            reduce using rule 76 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    CLOSE_BR        reduce using rule 76 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    SEMICOLON       reduce using rule 76 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    ELSE            reduce using rule 76 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    END             reduce using rule 76 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+
+
+state 233
+
+    (77) complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .
+
+    MORE_OR_EQUAL   reduce using rule 77 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    LESS_OR_EQUAL   reduce using rule 77 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    NOT_EQUAL       reduce using rule 77 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    MORE            reduce using rule 77 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    LESS            reduce using rule 77 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    EQUALS          reduce using rule 77 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    $end            reduce using rule 77 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    CLOSE_BR        reduce using rule 77 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    SEMICOLON       reduce using rule 77 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    ELSE            reduce using rule 77 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    END             reduce using rule 77 (complex_math -> OPEN_BR simple_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+
+
+state 234
+
+    (80) complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .
+
+    MORE_OR_EQUAL   reduce using rule 80 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    LESS_OR_EQUAL   reduce using rule 80 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    NOT_EQUAL       reduce using rule 80 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    MORE            reduce using rule 80 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    LESS            reduce using rule 80 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    EQUALS          reduce using rule 80 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    $end            reduce using rule 80 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    CLOSE_BR        reduce using rule 80 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    SEMICOLON       reduce using rule 80 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    ELSE            reduce using rule 80 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+    END             reduce using rule 80 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR complex_math CLOSE_BR .)
+
+
+state 235
+
+    (79) complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .
+
+    MORE_OR_EQUAL   reduce using rule 79 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    LESS_OR_EQUAL   reduce using rule 79 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    NOT_EQUAL       reduce using rule 79 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    MORE            reduce using rule 79 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    LESS            reduce using rule 79 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    EQUALS          reduce using rule 79 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    $end            reduce using rule 79 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    CLOSE_BR        reduce using rule 79 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    SEMICOLON       reduce using rule 79 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    ELSE            reduce using rule 79 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+    END             reduce using rule 79 (complex_math -> OPEN_BR complex_math CLOSE_BR math_sign OPEN_BR simple_math CLOSE_BR .)
+
+
+state 236
+
+    (82) complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR .
+
+    $end            reduce using rule 82 (complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR .)
+    CLOSE_BR        reduce using rule 82 (complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR .)
+    SEMICOLON       reduce using rule 82 (complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR .)
+    ELSE            reduce using rule 82 (complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR .)
+    END             reduce using rule 82 (complex_logic -> OPEN_BR simple_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR .)
+
+
+state 237
+
+    (84) complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR .
+
+    $end            reduce using rule 84 (complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR .)
+    CLOSE_BR        reduce using rule 84 (complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR .)
+    SEMICOLON       reduce using rule 84 (complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR .)
+    ELSE            reduce using rule 84 (complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR .)
+    END             reduce using rule 84 (complex_logic -> OPEN_BR complex_logic CLOSE_BR log_sign OPEN_BR simple_logic CLOSE_BR .)
+
+
+state 238
+
+    (67) complex_rel -> OPEN_BR math_expression CLOSE_BR rel_sign OPEN_BR math_expression CLOSE_BR .
+
+    $end            reduce using rule 67 (complex_rel -> OPEN_BR math_expression CLOSE_BR rel_sign OPEN_BR math_expression CLOSE_BR .)
+    CLOSE_BR        reduce using rule 67 (complex_rel -> OPEN_BR math_expression CLOSE_BR rel_sign OPEN_BR math_expression CLOSE_BR .)
+
+
+state 239
+
+    (9) if_statement -> IF OPEN_BR logic_expression CLOSE_BR EQUALS boolean_value then_else_statement .
+
+    $end            reduce using rule 9 (if_statement -> IF OPEN_BR logic_expression CLOSE_BR EQUALS boolean_value then_else_statement .)
+
+
+state 240
+
+    (13) then_else_statement -> THEN compound_statement ELSE . compound_statement
+    (15) then_else_statement -> THEN compound_statement ELSE . simple_statement
+    (89) compound_statement -> . BEGIN simple_statement END
+    (90) simple_statement -> . statement_list
+    (91) simple_statement -> . empty
+    (92) statement_list -> . statement
+    (93) statement_list -> . statement_list SEMICOLON statement
+    (116) empty -> .
+    (94) statement -> . assignment_expression
+    (95) statement -> . standart_cycle
+    (43) assignment_expression -> . ID EQUALITY NUMBER
+    (44) assignment_expression -> . ID EQUALITY QUOTE ID QUOTE
+    (45) assignment_expression -> . ID EQUALITY boolean_value
+    (46) assignment_expression -> . ID EQUALITY math_expression
+    (47) assignment_expression -> . ID EQUALITY logic_expression
+    (21) standart_cycle -> . standart_while
+    (22) standart_cycle -> . standart_for
+    (37) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement
+    (38) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement
+    (39) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement
+    (40) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement
+    (41) standart_for -> . FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement
+    (42) standart_for -> . FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement
+
+    BEGIN           shift and go to state 213
+    $end            reduce using rule 116 (empty -> .)
+    ID              shift and go to state 219
+    WHILE           shift and go to state 25
+    FOR             shift and go to state 26
+
+    compound_statement             shift and go to state 251
+    simple_statement               shift and go to state 252
+    statement_list                 shift and go to state 214
+    empty                          shift and go to state 215
+    statement                      shift and go to state 216
+    assignment_expression          shift and go to state 217
+    standart_cycle                 shift and go to state 218
+    standart_while                 shift and go to state 16
+    standart_for                   shift and go to state 17
+
+state 241
+
+    (14) then_else_statement -> THEN simple_statement ELSE . compound_statement
+    (16) then_else_statement -> THEN simple_statement ELSE . simple_statement
+    (89) compound_statement -> . BEGIN simple_statement END
+    (90) simple_statement -> . statement_list
+    (91) simple_statement -> . empty
+    (92) statement_list -> . statement
+    (93) statement_list -> . statement_list SEMICOLON statement
+    (116) empty -> .
+    (94) statement -> . assignment_expression
+    (95) statement -> . standart_cycle
+    (43) assignment_expression -> . ID EQUALITY NUMBER
+    (44) assignment_expression -> . ID EQUALITY QUOTE ID QUOTE
+    (45) assignment_expression -> . ID EQUALITY boolean_value
+    (46) assignment_expression -> . ID EQUALITY math_expression
+    (47) assignment_expression -> . ID EQUALITY logic_expression
+    (21) standart_cycle -> . standart_while
+    (22) standart_cycle -> . standart_for
+    (37) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement
+    (38) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement
+    (39) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement
+    (40) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement
+    (41) standart_for -> . FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement
+    (42) standart_for -> . FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement
+
+    BEGIN           shift and go to state 213
+    $end            reduce using rule 116 (empty -> .)
+    ID              shift and go to state 219
+    WHILE           shift and go to state 25
+    FOR             shift and go to state 26
+
+    simple_statement               shift and go to state 253
+    compound_statement             shift and go to state 254
+    statement_list                 shift and go to state 214
+    empty                          shift and go to state 215
+    statement                      shift and go to state 216
+    assignment_expression          shift and go to state 217
+    standart_cycle                 shift and go to state 218
+    standart_while                 shift and go to state 16
+    standart_for                   shift and go to state 17
+
+state 242
+
+    (89) compound_statement -> BEGIN simple_statement . END
+
+    END             shift and go to state 255
+
+
+state 243
+
+    (93) statement_list -> statement_list SEMICOLON . statement
+    (94) statement -> . assignment_expression
+    (95) statement -> . standart_cycle
+    (43) assignment_expression -> . ID EQUALITY NUMBER
+    (44) assignment_expression -> . ID EQUALITY QUOTE ID QUOTE
+    (45) assignment_expression -> . ID EQUALITY boolean_value
+    (46) assignment_expression -> . ID EQUALITY math_expression
+    (47) assignment_expression -> . ID EQUALITY logic_expression
+    (21) standart_cycle -> . standart_while
+    (22) standart_cycle -> . standart_for
+    (37) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO compound_statement
+    (38) standart_while -> . WHILE OPEN_BR logic_expression CLOSE_BR DO simple_statement
+    (39) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO compound_statement
+    (40) standart_while -> . WHILE OPEN_BR relational_expression CLOSE_BR DO simple_statement
+    (41) standart_for -> . FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement
+    (42) standart_for -> . FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement
+
+    ID              shift and go to state 219
+    WHILE           shift and go to state 25
+    FOR             shift and go to state 26
+
+    statement                      shift and go to state 256
+    assignment_expression          shift and go to state 217
+    standart_cycle                 shift and go to state 218
+    standart_while                 shift and go to state 16
+    standart_for                   shift and go to state 17
+
+state 244
+
+    (41) standart_for -> FOR ID EQUALITY NUMBER TO NUMBER DO . compound_statement
+    (89) compound_statement -> . BEGIN simple_statement END
+
+    BEGIN           shift and go to state 213
+
+    compound_statement             shift and go to state 257
+
+state 245
+
+    (42) standart_for -> FOR ID EQUALITY NUMBER DOWNTO NUMBER DO . compound_statement
+    (89) compound_statement -> . BEGIN simple_statement END
+
+    BEGIN           shift and go to state 213
+
+    compound_statement             shift and go to state 258
+
+state 246
+
+    (30) complex_declar -> identifier_list COLON type . SEMICOLON
+
+    SEMICOLON       shift and go to state 259
+
+
+state 247
+
+    (31) complex_declar -> complex_declar identifier_list COLON . type SEMICOLON
+    (25) type -> . standart_type
+    (26) type -> . ARRAY OPEN_SQUARE_BR NUMBER POINT POINT NUMBER CLOSE_SQUARE_BR OF standart_type
+    (27) type -> . standart_string
+    (32) standart_type -> . INTEGER
+    (33) standart_type -> . CHAR
+    (34) standart_type -> . BOOLEAN
+    (35) standart_string -> . STRING
+    (36) standart_string -> . STRING OPEN_SQUARE_BR NUMBER CLOSE_SQUARE_BR
+
+    ARRAY           shift and go to state 119
+    INTEGER         shift and go to state 121
+    CHAR            shift and go to state 122
+    BOOLEAN         shift and go to state 123
+    STRING          shift and go to state 124
+
+    type                           shift and go to state 260
+    standart_type                  shift and go to state 118
+    standart_string                shift and go to state 120
+
+state 248
+
+    (26) type -> ARRAY OPEN_SQUARE_BR NUMBER POINT POINT . NUMBER CLOSE_SQUARE_BR OF standart_type
+
+    NUMBER          shift and go to state 261
+
+
+state 249
+
+    (8) standart_subprogram -> FUNCTION ID OPEN_BR parameter_list CLOSE_BR COLON standart_type SEMICOLON .
+
+    $end            reduce using rule 8 (standart_subprogram -> FUNCTION ID OPEN_BR parameter_list CLOSE_BR COLON standart_type SEMICOLON .)
+
+
+state 250
+
+    (24) parameter_list -> parameter_list SEMICOLON identifier_list COLON type .
+
+    CLOSE_BR        reduce using rule 24 (parameter_list -> parameter_list SEMICOLON identifier_list COLON type .)
+    SEMICOLON       reduce using rule 24 (parameter_list -> parameter_list SEMICOLON identifier_list COLON type .)
+
+
+state 251
+
+    (13) then_else_statement -> THEN compound_statement ELSE compound_statement .
+
+    $end            reduce using rule 13 (then_else_statement -> THEN compound_statement ELSE compound_statement .)
+
+
+state 252
+
+    (15) then_else_statement -> THEN compound_statement ELSE simple_statement .
+
+    $end            reduce using rule 15 (then_else_statement -> THEN compound_statement ELSE simple_statement .)
+
+
+state 253
+
+    (16) then_else_statement -> THEN simple_statement ELSE simple_statement .
+
+    $end            reduce using rule 16 (then_else_statement -> THEN simple_statement ELSE simple_statement .)
+
+
+state 254
+
+    (14) then_else_statement -> THEN simple_statement ELSE compound_statement .
+
+    $end            reduce using rule 14 (then_else_statement -> THEN simple_statement ELSE compound_statement .)
+
+
+state 255
+
+    (89) compound_statement -> BEGIN simple_statement END .
+
+    ELSE            reduce using rule 89 (compound_statement -> BEGIN simple_statement END .)
+    $end            reduce using rule 89 (compound_statement -> BEGIN simple_statement END .)
+    SEMICOLON       reduce using rule 89 (compound_statement -> BEGIN simple_statement END .)
+    END             reduce using rule 89 (compound_statement -> BEGIN simple_statement END .)
+
+
+state 256
+
+    (93) statement_list -> statement_list SEMICOLON statement .
+
+    SEMICOLON       reduce using rule 93 (statement_list -> statement_list SEMICOLON statement .)
+    ELSE            reduce using rule 93 (statement_list -> statement_list SEMICOLON statement .)
+    $end            reduce using rule 93 (statement_list -> statement_list SEMICOLON statement .)
+    END             reduce using rule 93 (statement_list -> statement_list SEMICOLON statement .)
+
+
+state 257
+
+    (41) standart_for -> FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement .
+
+    $end            reduce using rule 41 (standart_for -> FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement .)
+    SEMICOLON       reduce using rule 41 (standart_for -> FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement .)
+    ELSE            reduce using rule 41 (standart_for -> FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement .)
+    END             reduce using rule 41 (standart_for -> FOR ID EQUALITY NUMBER TO NUMBER DO compound_statement .)
+
+
+state 258
+
+    (42) standart_for -> FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement .
+
+    $end            reduce using rule 42 (standart_for -> FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement .)
+    SEMICOLON       reduce using rule 42 (standart_for -> FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement .)
+    ELSE            reduce using rule 42 (standart_for -> FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement .)
+    END             reduce using rule 42 (standart_for -> FOR ID EQUALITY NUMBER DOWNTO NUMBER DO compound_statement .)
+
+
+state 259
+
+    (30) complex_declar -> identifier_list COLON type SEMICOLON .
+
+    ID              reduce using rule 30 (complex_declar -> identifier_list COLON type SEMICOLON .)
+    $end            reduce using rule 30 (complex_declar -> identifier_list COLON type SEMICOLON .)
+
+
+state 260
+
+    (31) complex_declar -> complex_declar identifier_list COLON type . SEMICOLON
+
+    SEMICOLON       shift and go to state 262
+
+
+state 261
+
+    (26) type -> ARRAY OPEN_SQUARE_BR NUMBER POINT POINT NUMBER . CLOSE_SQUARE_BR OF standart_type
+
+    CLOSE_SQUARE_BR shift and go to state 263
+
+
+state 262
+
+    (31) complex_declar -> complex_declar identifier_list COLON type SEMICOLON .
+
+    ID              reduce using rule 31 (complex_declar -> complex_declar identifier_list COLON type SEMICOLON .)
+    $end            reduce using rule 31 (complex_declar -> complex_declar identifier_list COLON type SEMICOLON .)
+
+
+state 263
+
+    (26) type -> ARRAY OPEN_SQUARE_BR NUMBER POINT POINT NUMBER CLOSE_SQUARE_BR . OF standart_type
+
+    OF              shift and go to state 264
+
+
+state 264
+
+    (26) type -> ARRAY OPEN_SQUARE_BR NUMBER POINT POINT NUMBER CLOSE_SQUARE_BR OF . standart_type
+    (32) standart_type -> . INTEGER
+    (33) standart_type -> . CHAR
+    (34) standart_type -> . BOOLEAN
+
+    INTEGER         shift and go to state 121
+    CHAR            shift and go to state 122
+    BOOLEAN         shift and go to state 123
+
+    standart_type                  shift and go to state 265
+
+state 265
+
+    (26) type -> ARRAY OPEN_SQUARE_BR NUMBER POINT POINT NUMBER CLOSE_SQUARE_BR OF standart_type .
+
+    SEMICOLON       reduce using rule 26 (type -> ARRAY OPEN_SQUARE_BR NUMBER POINT POINT NUMBER CLOSE_SQUARE_BR OF standart_type .)
+    CLOSE_BR        reduce using rule 26 (type -> ARRAY OPEN_SQUARE_BR NUMBER POINT POINT NUMBER CLOSE_SQUARE_BR OF standart_type .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for MORE_OR_EQUAL in state 18 resolved as shift
+WARNING: shift/reduce conflict for LESS_OR_EQUAL in state 18 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 18 resolved as shift
+WARNING: shift/reduce conflict for MORE in state 18 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 18 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 18 resolved as shift
+WARNING: shift/reduce conflict for MORE_OR_EQUAL in state 19 resolved as shift
+WARNING: shift/reduce conflict for LESS_OR_EQUAL in state 19 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 19 resolved as shift
+WARNING: shift/reduce conflict for MORE in state 19 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 19 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 19 resolved as shift
+WARNING: shift/reduce conflict for CLOSE_BR in state 49 resolved as shift
+WARNING: shift/reduce conflict for CLOSE_BR in state 52 resolved as shift
+WARNING: shift/reduce conflict for MORE_OR_EQUAL in state 98 resolved as shift
+WARNING: shift/reduce conflict for LESS_OR_EQUAL in state 98 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 98 resolved as shift
+WARNING: shift/reduce conflict for MORE in state 98 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 98 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 98 resolved as shift
+WARNING: shift/reduce conflict for MORE_OR_EQUAL in state 99 resolved as shift
+WARNING: shift/reduce conflict for LESS_OR_EQUAL in state 99 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 99 resolved as shift
+WARNING: shift/reduce conflict for MORE in state 99 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 99 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 99 resolved as shift
+WARNING: shift/reduce conflict for CLOSE_BR in state 146 resolved as shift
+WARNING: shift/reduce conflict for CLOSE_BR in state 147 resolved as shift
+WARNING: shift/reduce conflict for SEMICOLON in state 214 resolved as shift

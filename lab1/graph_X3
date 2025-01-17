@@ -1,0 +1,28 @@
+digraph NKA {
+	rankdir=LR size="8,5"
+	Q0
+	node [shape=doublecircle]
+	Q0 -> Q1 [label=Eps]
+	Q1 -> Q2 [label=Eps]
+	Q2 -> Q3 [label=0]
+	Q3 -> Q4 [label=Eps]
+	Q4 -> Q4 [label=1]
+	Q4 -> Q5 [label=Eps]
+	Q5 -> Q6 [label=0]
+	Q6 -> Q7 [label=Eps]
+	Q7 -> Q7 [label=1]
+	Q7 -> Q8 [label=Eps]
+	Q8 -> Q9 [label=0]
+	Q1 -> Q10 [label=Eps]
+	Q10 -> Q11 [label=1]
+	Q11 -> Q12 [label=Eps]
+	Q9 -> Q12 [label=Eps]
+	Q12 -> Q1 [label=Eps]
+	Q12 -> Q13 [label=Eps]
+	Q0 -> Q13 [label=Eps]
+	Q13 -> Q14 [label=0]
+	Q14 -> Q15 [label=Eps]
+	Q15 -> Q15 [label=1]
+	Q15 -> Q16 [label=Eps]
+	Q16
+}
