@@ -12,18 +12,8 @@
 
 <h2>Lab №1. Write a program that takes a random right-linear grammar as input and performs the following transformations::</h2>
 <ul>
-  <li>Select a topic for lab</li>
-  <li>Create a dataset with a minimum of 25 objects</li>
-  <li>Select the attributes by which objects will be compared</li>
-  <ul>
-      <li>1 binary attribute</li>
-      <li>2 numerical attributes</li>
-      <li>1 non-numeric attribute</li>
-  </ul>
-  <li>Create a hierarchy (classification) of objects of the selected subject, in the form of a tree with a minimum height of 4</li>
-  <li>Select proximity measures for objects</li>
-  <li>Implement a content-oriented recommendation system</li>
-  <li>Implement filters by object attributes. Formation of data sampling step by step</li>
-  <li>Develop questions and scenarios for dialogue systems</li>
-  <li>Implementation of a dialogue system that interacts with the user in natural language (Russian) within a given topic with a limited set of conversation scenarios</li>
+  <li>1. Given a right-linear grammar, constructs a standard system of equations with regular coefficients, the unknowns of which are the nonterminals of the original grammar.</li>
+  <li>2. Solves a standard system of equations with regular coefficients.</li>
+  <li>3. Given a regular expression that is a solution to a standard system of equations with regular coefficients, constructs an NFA.</li>
+  <li>4. Deterministically models an NFA.</li>
 </ul>
