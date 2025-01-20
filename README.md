@@ -14,6 +14,6 @@
 <ul>
   <li>1. Given a right-linear grammar, constructs a standard system of equations with regular coefficients, the unknowns of which are the nonterminals of the original grammar.</li>
   <li>2. Solves a standard system of equations with regular coefficients.</li>
-  <li>3. Given a regular expression that is a solution to a standard system of equations with regular coefficients, constructs an NFA.</li>
+  <li>3. Given a regular expression that is a solution to a standard system of equations with regular coefficients, constructs an Nondeterministic Finite Automaton (NFA).</li>
   <li>4. Deterministically models an NFA.</li>
 </ul>
