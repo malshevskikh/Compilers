@@ -37,5 +37,13 @@
 
 ![pic2](https://github.com/user-attachments/assets/7058c06a-99df-4ee7-b1ee-3fd0688eb185)
 
+<h5>Solution of a system of equations:</h5>
+
+![pic3](https://github.com/user-attachments/assets/b8384632-142d-4c6d-9700-99989495a265)
+
+<h5>List of state transitions in expression X3:</h5>
+
+![pic4](https://github.com/user-attachments/assets/6c886239-29a5-4c90-8610-1b6916b48c7d)
+
 
 
