@@ -57,4 +57,24 @@
 
 ![pic7](https://github.com/user-attachments/assets/e3424969-3f54-401d-8ef4-7165a40056d9)
 
+<h5>NFA for expression X2:</h5>
+
+![pic8](https://github.com/user-attachments/assets/6c6c1115-86df-445c-95ff-71566eb1d5de)
+
+
+<h5>NFA for expression X1</h5>
+
+![pic9](https://github.com/user-attachments/assets/3658c44e-0532-43ae-9490-ea592d786638)
+
+
+<h5>List of state transitions without Eps transitions in expressions X3, X2, X1:</h5>
+
+![pic10](https://github.com/user-attachments/assets/1f92c225-6e3b-4dda-a9aa-42e02f945fd6)
+
+
+<h5>Deterministic finite automaton (DFA) for X3:</h5>
+
+![pic11](https://github.com/user-attachments/assets/b576e5be-ba09-4053-b115-cb2f1601396b)
+
+
 
