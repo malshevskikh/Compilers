@@ -76,5 +76,10 @@
 
 ![pic11](https://github.com/user-attachments/assets/b576e5be-ba09-4053-b115-cb2f1601396b)
 
+<h5>DFA for X2:</h5>
 
+![pic12](https://github.com/user-attachments/assets/886471ee-26ac-44ec-a8ed-ec0b82adf2da)
 
+<h5>DFA for X1:</h5>
+
+![pic13](https://github.com/user-attachments/assets/e233ccd2-8eec-4923-8375-06e195bc30e5)
