@@ -45,5 +45,9 @@
 
 ![pic4](https://github.com/user-attachments/assets/6c886239-29a5-4c90-8610-1b6916b48c7d)
 
+<h5>List of state transitions in expression X2:</h5>
+
+![pic5](https://github.com/user-attachments/assets/d78f6fde-81d4-4987-a68d-7725b2db6009)
+
 
 
