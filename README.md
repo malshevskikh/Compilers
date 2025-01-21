@@ -31,3 +31,11 @@
 <h4>Input (example of right-linear grammar):</h4>
 
 ![pic1](https://github.com/user-attachments/assets/cde0b75e-e741-4d27-93ca-f71f220007d3)
+
+<h4>Output:</h4>
+<h5>System of equations according to right-linear grammar:</h5>
+
+![pic2](https://github.com/user-attachments/assets/7058c06a-99df-4ee7-b1ee-3fd0688eb185)
+
+
+
