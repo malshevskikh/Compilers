@@ -11,13 +11,14 @@
 
 
 <h2>Lab №1. Write a program that takes a random right-linear grammar as input and performs the following transformations (Напишите программу, которая в качестве входа принимает произвольную праволинейную  грамматику, и выполняет следующие преобразования):</h2>
+<h3>In english:</h3>
 <ol>
   <li>Given a right-linear grammar, constructs a standard system of equations with regular coefficients, the unknowns of which are the nonterminals of the original grammar.</li>
   <li> Solves a standard system of equations with regular coefficients.</li>
   <li> Given a regular expression that is a solution to a standard system of equations with regular coefficients, constructs an Nondeterministic Finite Automaton (NFA).</li>
   <li> Deterministically models an NFA.</li>
 </ol>
-
+<h3>In russian:</h3>
 <ol>
   <li>По праволинейной грамматике строит стандартную систему уравнений с регулярными коэффициентами, неизвестными которой служат нетерминалы исходной грамматики.</li>
   <li>Решает стандартную систему уравнений с регулярными коэффициентами.</li>
