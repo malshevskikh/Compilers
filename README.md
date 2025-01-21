@@ -26,3 +26,8 @@
   <li>Детерминировано моделирует НКА.</li>
 </ol>
 
+<h3>Result:</h3>
+
+<h4>Input (example of right-linear grammar):</h4>
+
+![pic1](https://github.com/user-attachments/assets/cde0b75e-e741-4d27-93ca-f71f220007d3)
