@@ -49,5 +49,12 @@
 
 ![pic5](https://github.com/user-attachments/assets/d78f6fde-81d4-4987-a68d-7725b2db6009)
 
+<h5>List of transitions between states in expression X1:</h5>
+
+![pic6](https://github.com/user-attachments/assets/6acbb740-73c5-413e-b3a1-6afd898697f9)
+
+<h5>NFA for expression X3:</h5>
+
+![pic7](https://github.com/user-attachments/assets/e3424969-3f54-401d-8ef4-7165a40056d9)
 
 
