@@ -83,3 +83,17 @@
 <h5>DFA for X1:</h5>
 
 ![pic13](https://github.com/user-attachments/assets/e233ccd2-8eec-4923-8375-06e195bc30e5)
+
+
+<h2>Lab №2. Grammar transformations (Преобразования грамматик):</h2>
+<h3>In english:</h3>
+<ol>
+  <li>Build a program that takes as input the given context-free grammar (CFG) G = (N,E,P,S) and transforms it into an equivalent CFG G' without left recursion.</li>
+  <li>Build a program that takes as input an arbitrary CFG G = (N,E,P,S) and transforms it into an equivalent CFG G' = (N',E',P',S') that does not contain unreachable symbols.</li>
+</ol>
+<h3>In russian:</h3>
+<ol>
+  <li>Постройте программу, которая в качестве входа принимает приведенную контекстно-свободную грамматику (КС-грамматику) G = (N,E,P,S) и преобразует ее в эквивалентную КС-грамматику G' без левой рекурсии.</li>
+  <li>Постройте программу, которая в качестве входа принимает произвольную КС-грамматику G = (N,E,P,S) и преобразует ее в эквивалентную КС-грамматику G' = (N',E',P',S'), не содержащую недостижимых символов.</li>
+</ol>
+
