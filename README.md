@@ -103,3 +103,8 @@
 
 ![pic1](https://github.com/user-attachments/assets/8b51bcbb-a573-42f4-9c0f-cd0b9e510e04)
 
+<h4>Output (detailed description of the algorithm for eliminating left recursion with the result):</h4>
+
+![pic2](https://github.com/user-attachments/assets/24f09879-f5d5-457d-b53a-8495b38f1689)
+
+![pic3](https://github.com/user-attachments/assets/6a1965e9-58c3-4d8d-9ceb-7c26d3c9f52d)
