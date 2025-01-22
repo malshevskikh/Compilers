@@ -130,3 +130,20 @@
 
 <img width="377" alt="Снимок экрана 2025-01-22 в 12 08 32" src="https://github.com/user-attachments/assets/7feab664-f934-44fd-9d89-2433aea7f2b7" />
 
+<h4>Input string for checking:</h4>
+
+![pic1](https://github.com/user-attachments/assets/3734b424-86f5-488b-bb6b-f9aaac62380a)
+
+
+<h4>Output:</h4>
+
+<h5>Input string and list of rules:</h5>
+
+![pic2](https://github.com/user-attachments/assets/df7700ff-6ad9-43b7-a536-32f1c3c488a9)
+
+<h5>Parsing the first part of the line:</h5>
+
+![pic3](https://github.com/user-attachments/assets/161a690f-bc7e-4f46-91aa-279449a57b3b)
+
+
+
