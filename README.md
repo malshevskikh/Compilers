@@ -145,5 +145,15 @@
 
 ![pic3](https://github.com/user-attachments/assets/161a690f-bc7e-4f46-91aa-279449a57b3b)
 
+<h5>Parsing the second part of the line:</h5>
+
+![pic4](https://github.com/user-attachments/assets/30e19d4e-63ca-433d-a49f-abcbba8f3419)
+
+![pic4_1](https://github.com/user-attachments/assets/7b3c964b-b6fc-48f8-98ab-7db7a8c1c969)
+
+
+<h5>Parsing the third part of the line:</h5>
+
+
 
 
