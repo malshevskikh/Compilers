@@ -154,6 +154,13 @@
 
 <h5>Parsing the third part of the line:</h5>
 
+![pic5](https://github.com/user-attachments/assets/d00a9f41-5265-41be-91f9-ccfac3b96e61)
+
+<h5>Parsing the fourth part of the line:</h5>
+
+![pic6](https://github.com/user-attachments/assets/0793a823-3451-42f0-9cdc-752acc13244b)
+
+![pic6_1](https://github.com/user-attachments/assets/756f652e-2327-42ac-9b9b-156892d8f40e)
 
 
 
