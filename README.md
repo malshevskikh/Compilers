@@ -113,11 +113,11 @@
 <h2>Lab №3. Parsing using recursive descent method (Синтаксический разбор с использованием метода рекурсивного спуска):</h2>
 <h3>In english:</h3>
 <ol>
-  <li></li>
-  <li></li>
+  <li>Supplement the grammar with a block consisting of a sequence of assignment operators. Two variants of the extended grammar are proposed for implementation.</li>
+  <li>For the modified grammar, write a program for descending syntactic analysis using the recursive descent method.</li>
 </ol>
 <h3>In russian:</h3>
 <ol>
-  <li></li>
-  <li></li>
+  <li>Дополнить грамматику блоком, состоящим из последовательности операторов присваивания. Для реализации предлагаются два варианта расширенной грамматики.</li>
+  <li>Для модифицированной грамматики написать программу нисходящего синтаксического анализа с использованием метода рекурсивного спуска.</li>
 </ol>
