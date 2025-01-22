@@ -101,4 +101,5 @@
 
 <h4>Input (list of grammars):</h4>
 
-<img width="230" alt="image" src="https://github.com/user-attachments/assets/0d4d0c21-725e-4fe3-9f0a-7327dd97f4b3" />
+![pic1](https://github.com/user-attachments/assets/8b51bcbb-a573-42f4-9c0f-cd0b9e510e04)
+
