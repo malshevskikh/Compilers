@@ -111,6 +111,9 @@
 
 
 <h2>Lab №3. Parsing using recursive descent method (Синтаксический разбор с использованием метода рекурсивного спуска):</h2>
+
+<img width="662" alt="Снимок экрана 2025-01-22 в 12 05 26" src="https://github.com/user-attachments/assets/762d2299-0a38-458b-ac30-4fb09a22c699" />
+
 <h3>In english:</h3>
 <ol>
   <li>Supplement the grammar with a block consisting of a sequence of assignment operators. Two variants of the extended grammar are proposed for implementation.</li>
