@@ -108,3 +108,16 @@
 ![pic2](https://github.com/user-attachments/assets/24f09879-f5d5-457d-b53a-8495b38f1689)
 
 ![pic3](https://github.com/user-attachments/assets/6a1965e9-58c3-4d8d-9ceb-7c26d3c9f52d)
+
+
+<h2>Lab №3. Parsing using recursive descent method (Синтаксический разбор с использованием метода рекурсивного спуска):</h2>
+<h3>In english:</h3>
+<ol>
+  <li>Build a program that takes as input the given context-free grammar (CFG) G = (N,E,P,S) and transforms it into an equivalent CFG G' without left recursion.</li>
+  <li>Build a program that takes as input an arbitrary CFG G = (N,E,P,S) and transforms it into an equivalent CFG G' = (N',E',P',S') that does not contain unreachable symbols.</li>
+</ol>
+<h3>In russian:</h3>
+<ol>
+  <li>Постройте программу, которая в качестве входа принимает приведенную контекстно-свободную грамматику (КС-грамматику) G = (N,E,P,S) и преобразует ее в эквивалентную КС-грамматику G' без левой рекурсии.</li>
+  <li>Постройте программу, которая в качестве входа принимает произвольную КС-грамматику G = (N,E,P,S) и преобразует ее в эквивалентную КС-грамматику G' = (N',E',P',S'), не содержащую недостижимых символов.</li>
+</ol>
