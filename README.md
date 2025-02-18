@@ -169,9 +169,16 @@
 <h3>Задание: сконструировать компилятор на языке программирования Python для грамматик языка программирования Pascal </h3>
 
 <h3>Result:</h3>
-<h4>Pascal syntax lines are entered. Example of Pascal code lines entered for the compiler (Вводятся строки с синтаксисом Pascal. Пример строк кода на Pascal, вводимых для компилятора:):</h4>
-
+<h4>1.Pascal syntax lines are entered. Example of Pascal code lines entered for the compiler (Вводятся строки с синтаксисом Pascal. Пример строк кода на Pascal, вводимых для компилятора:):</h4>
 <img width="268" alt="image" src="https://github.com/user-attachments/assets/33b817bb-21f0-41d1-b3f9-20b300d28305" />
+
+<h4>2.After selecting a code, for example the expression "5*10", the strings are passed to the parser constructor for lexical and syntactic analysis, as well as AST generation (После выбора кода, например выражения «5*10», строки передаются конструктору парсера для проведения лексического, синтаксического анализов, а также генерации AST):</h4>
+
+<img width="288" alt="image" src="https://github.com/user-attachments/assets/eacd5d5e-68c0-426c-b075-9b74c90f5661" />
+
+<h4>3.As a result of executing the code, an AST tree will be generated and when executing the code "5*10" the result will be "50" (В результате исполнения кода будет сгенерировано дерево AST и при выполнении кода «5*10» получится результат «50»):</h4>
+
+<img width="482" alt="image" src="https://github.com/user-attachments/assets/9f5a2928-bf19-4e16-b49f-0d1bc9771c4f" />
 
 
 <h4>Output:</h4>
