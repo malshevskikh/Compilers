@@ -167,3 +167,11 @@
 <h3>Task: Design a compiler in the Python programming language for the grammars of the Pascal programming language</h3>
 
 <h3>Задание: сконструировать компилятор на языке программирования Python для грамматик языка программирования Pascal </h3>
+
+<h3>Result:</h3>
+<h4>Pascal syntax lines are entered. Example of Pascal code lines entered for the compiler (Вводятся строки с синтаксисом Pascal. Пример строк кода на Pascal, вводимых для компилятора:):</h4>
+
+<img width="268" alt="image" src="https://github.com/user-attachments/assets/33b817bb-21f0-41d1-b3f9-20b300d28305" />
+
+
+<h4>Output:</h4>
