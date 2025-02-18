@@ -162,5 +162,5 @@
 
 ![pic6_1](https://github.com/user-attachments/assets/756f652e-2327-42ac-9b9b-156892d8f40e)
 
-<h2>Course work. Compiler for Pascal programming language to Python programming language (Компилятор для языка программирования Pascal на языке программирования Python):</h2>
+<h2>Course work. Compiler for Pascal programming language to Python programming language (Курсовая работа. Компилятор для языка программирования Pascal на языке программирования Python):</h2>
 
