@@ -164,3 +164,6 @@
 
 <h2>Course work. Compiler for Pascal programming language to Python programming language (Курсовая работа. Компилятор для языка программирования Pascal на языке программирования Python):</h2>
 
+<h3>Task: Design a compiler in the Python programming language for the grammars of the Pascal programming language</h3>
+
+<h3>Задание: сконструировать компилятор на языке программирования Python для грамматик языка программирования Pascal </h3>
