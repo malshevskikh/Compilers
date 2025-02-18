@@ -182,13 +182,12 @@
 
 <h4>4.Example of AST for input string 'ex9' (пример AST для входной строки):</h4>
 
+<h4>1)</h4>
 <img width="482" alt="image" src="https://github.com/user-attachments/assets/fa95108e-fde6-47dc-a29b-aed0aac9bfd2" />
 
-
+<h4>2)</h4>
 <img width="482" alt="image" src="https://github.com/user-attachments/assets/9d137b1e-913e-472f-961f-e531e0679465" />
 
-
+<h4>3)</h4>
 <img width="482" alt="image" src="https://github.com/user-attachments/assets/226906c6-ba85-49fe-be9a-b029af9558a1" />
 
-
-<h4>Output:</h4>
