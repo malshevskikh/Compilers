@@ -180,11 +180,13 @@
 
 <img width="482" alt="image" src="https://github.com/user-attachments/assets/9f5a2928-bf19-4e16-b49f-0d1bc9771c4f" />
 
-<h4>Example of AST for input string 'ex9' (пример AST для входной строки):</h4>
+<h4>4.Example of AST for input string 'ex9' (пример AST для входной строки):</h4>
 
 <img width="482" alt="image" src="https://github.com/user-attachments/assets/fa95108e-fde6-47dc-a29b-aed0aac9bfd2" />
 
+
 <img width="482" alt="image" src="https://github.com/user-attachments/assets/9d137b1e-913e-472f-961f-e531e0679465" />
+
 
 <img width="482" alt="image" src="https://github.com/user-attachments/assets/226906c6-ba85-49fe-be9a-b029af9558a1" />
 
